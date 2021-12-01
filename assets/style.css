@@ -1,0 +1,13 @@
+#connexion {
+    justify-content: stretch;
+    text-align: center;
+}
+input {
+    border-radius: 10px;
+}
+form>div {
+    justify-content: stretch;
+}
+h2 {
+    color:teal;
+}
