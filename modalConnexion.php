@@ -1,10 +1,6 @@
-<!--Button trigger modal-->
-<button type="button" class="btn btn-outline-dark my-2 my-sm-0" data-toggle="modal" data-target="#modalConnexion" href="./includes/modalConnexion.php">
-  Connexion
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="modalConnexion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<!-- Modal Connexion -->
+<div class="modal fade" 
+ id="modalConnexion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -14,29 +10,32 @@
         </button>
       </div>
       <div class="modal-body">
-        <form id="connexion" method="post" action="">
+        <form id="connexion" method="post" action="./controllers/checkUser.php">
           <div class=row>
             <div class=col-12>
-              <label for="nom">Identifiant</label>
-              <input type="text" name="nom" id="nom">
+              <label for="email">Email</label>
+              <input type="email" name="email" id="email">
               <br />
             </div>
           </div>
           <div class=row>
             <div class=col-12>
 
-              <label for="mdp">Mot de passe</label>
-              <input type="password" name="mdp" id="mdp">
+              <label for="emdp">Mot de passe</label>
+              <input type="password" name="emdp" id="emdp">
               <br />
             </div>
           </div>
           <div class=row>
             <div class=col-12>
-            <button type="button" class="btn btn-dark">Connexion</button>
-            <br />
-            <a href="">Mot de passe oublié?</a>
+              <button type="submit" class="btn btn-dark">Connexion</button>
+              <br />
+              <a href="">Mot de passe oublié?</a>
+            </div>
+            <div>
+              <p><?php pbDeMotDePasse ()?></p>
+            </div>
           </div>
-</div>
         </form>
 
       </div>
