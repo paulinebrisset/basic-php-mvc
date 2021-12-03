@@ -8,18 +8,29 @@ $_SESSION["nom"] = $_POST['nom'];
 $_SESSION["mail"] = $_POST['mail'];
 $_SESSION["mdp"] = $_POST['mdp'];
 
-executerLaRequete () ;
-// verifierLaBonneExecutionDeLaRequete ();
+$monUtilisateur = new User ($_POST['nom'], $_POST['mail'], $_POST['mdp'], false);
+//j'appelle une méthode de la classe User qui correspond à executerLaRequette
+$monUtilisateur->enregistrerUnNouvelUtilisateurDansLaBdd ($_POST['nom'], $_POST['mail'], $_POST['mdp'], false);
+
+// si c'est une connexion, je crée une instance et je le check, si c'est une instance, je crée une instance et je l'enregistre
 
 
-function executerLaRequete() {
-    global $instancePdo;
-    global $preRequeteSql;;
-    //je prépare ma requête avec une instance de PDO créée dans logInDatabase.php
-    $maRequete= $instancePdo->prepare($preRequeteSql);
-    //je lui fournis les données saisies dans le formulaire
-    $maRequete->execute(array($_SESSION["nom"] , $_SESSION["mail"], $_SESSION["mdp"] ));
-}
+
+
+
+
+// executerLaRequete () ;
+// // verifierLaBonneExecutionDeLaRequete ();
+
+
+// function executerLaRequete() {
+//     global $instancePdo;
+//     global $preRequeteSql;;
+//     //je prépare ma requête avec une instance de PDO créée dans logInDatabase.php
+//     $maRequete= $instancePdo->prepare($preRequeteSql);
+//     //je lui fournis les données saisies dans le formulaire
+//     $maRequete->execute(array($_SESSION["nom"] , $_SESSION["mail"], $_SESSION["mdp"] ));
+// }
 
 // function quiEstLeDernierUtilisateur(){
 //     global $instancePdo;
@@ -36,7 +47,7 @@ function executerLaRequete() {
 //     $preparation = $instancePdo->prepare($preRequeteVerification);
 //     //charger le paramètre
 //     $parametre=quiEstLeDernierUtilisateur();
-//     //executer la requête
+//     //executerLaRequette la requête
 //     $preparation->execute(array($parametre));
 //     //capter le résultat de la requête
 //     $retour= $preparation->fetchAll(PDO::FETCH_ASSOC);

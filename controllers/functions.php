@@ -65,5 +65,28 @@ function barreDeNavigationComplete () {
         </li>');
     } 
 }
+/*************************TESTS **********************************/
+class Connexion {
+    //----------------------------- parametrage accès à cette database
+private $host 	= 'localhost'	;
+private $dbname  = 'utilisateurs' 		;
+private $usrBdd	= 'dwwm_2021' 		;
+private $pwdBdd	= 'Afpar2021!' 			;
+//----------------------------- /parametrage 
+private $adresseBdd = 'mysql:host='.$host.';dbname='.$dbname.';charset=utf8;' ;   
+
+public function getinstancePdo () {
+//je tente une connexion à la database. Intance PDO crée si OK, message d'erreur sinon
+    try { 
+        // instance de pdo identifiant la database visée
+        $instancePdo= new PDO( $adresseBdd, $usrBdd, $pwdBdd );
+    } catch (Exception $e) { 
+        die('Erreur fatale : ' . $e->getMessage());
+    }
+    return $this-> $instancePdo;
+}
+}
+$connexion= new Connexion;
+$_SESSION['monInstancePdo']=$connexion->getinstancePdo();
 
 ?>

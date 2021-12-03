@@ -19,6 +19,8 @@
     } else {
         echo("L'utilisateur n'est pas logué");
     }
+?><?php echo(
+$_SESSION['monInstancePdo']);
 ?>
 </body>
 </html>
