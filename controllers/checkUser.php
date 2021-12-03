@@ -53,7 +53,8 @@ function checkerLeMdp () {
     foreach ($monMdp as $leBonMdp){
         //si on trouve le bon, pour le moment on repart sur index
         if ($leBonMdp["mdp"]==$_SESSION["mdp"]) {
-            $_SESSION["nom"]=$leBonMdp["nom"];
+            //enregistrer toutes les données de l'utilisateur dans une variable de session
+            $_SESSION['user']=$leBonMdp;
             $_SESSION['erreurMdp']=false;
             header ("location:../index.php");
             exit();

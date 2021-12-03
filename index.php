@@ -6,11 +6,19 @@
 <?php include './includes/footer.php'?>
 <?php include './includes/js.php' ?>
 <?php include './database/connexion.php' ?>
-<?php   
-    if (isset($_SESSION['erreurMdp']) && $_SESSION['erreurMdp']==true) {?>
-    <script>$('#modalConnexion').modal()</script>
-    <?php
+<?php verifierErreurMdp() ?>
+
+<!---Fonction OSEF pour que je m'y retrouve-->
+<?php 
+    if (isset($_SESSION['user'])) {
+        if (isTheUserAnAdmin()==true){
+            echo("L'utilisateur est admin");
+        } else {
+            echo("L'utilisateur n'est pas admin");
+        } 
+    } else {
+        echo("L'utilisateur n'est pas logué");
     }
-    ?>
+?>
 </body>
 </html>

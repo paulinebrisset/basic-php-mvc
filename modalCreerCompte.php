@@ -1,5 +1,3 @@
-
-
 <!-- Modal créer un compte-->
 <div class="modal fade" id="modalCreerCompte" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -18,7 +16,7 @@
 
           <label for="mail">Email</label>
           <input type="email" name="mail" id="mail">
-
+          <br />
           <label for="age">Mot de passe</label>
           <input type="password" name="mdp" id="mdp" />
           <br />

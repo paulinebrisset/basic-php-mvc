@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" id="titreNavBar" href="#"><?php afficherLeTitre(); ?></a>
+  <a class="navbar-brand" id="titreNavBar" href="#">Mon super site</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -17,9 +17,12 @@
       <li class="nav-item">
         <a class="nav-link disabled" href="#">Disabled</a>
       </li>
+      <?php barreDeNavigationComplete ()?>
     </ul>
   </div>
+  <?php afficherLeTitre(); ?>
   <?php quelsBoutonsAfficher ()?>
+ 
   <?php include './modalConnexion.php';
   include './modalCreerCompte.php' ?>
 </nav>
