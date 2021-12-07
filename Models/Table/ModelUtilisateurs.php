@@ -1,10 +1,8 @@
 <?php
-
 namespace App\Models\Table;
+use App\Models\Model;
 
-use App\Main\Connexion;
-
-class User{
+class ModelUtilisateurs extends Model{
 
     private $nom;
     private $mail;
@@ -12,10 +10,8 @@ class User{
     private $droit;
 
     /*************CONSTRUCTEUR ********************/
-    public function __construct(string $nom, string $mail, string $mdp, $droit = false){
-        $this->nom = $nom;
-        $this->mail = $mail;
-        $this->mdp = $mdp;
+    public function __construct(){
+        $this->table = 'utilisateurs';
     }
 
     /**************GETTERS **********/
@@ -36,15 +32,19 @@ class User{
 
     public function setNom(string $nom){
         $this->nom = $nom;
+        return $this;
     }
-    public function setNom(string $mail){
+    public function setMail(string $mail){
         $this->nom = $mail;
+        return $this;
     }
-    public function setNom(string $mdp){
+    public function setMdp(string $mdp){
         $this->nom = $mdp;
+        return $this;
     }
-    public function setNom(string $droit){
+    public function setDroit(string $droit){
         $this->nom = $droit;
+        return $this;
     }
 
 }

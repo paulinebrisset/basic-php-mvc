@@ -3,11 +3,11 @@ namespace App;
 
 class Autoload {
     //on met en statique pour ne pas avoir à instancer la classe pour utiliser la fonction register
-
-    static function register (){     
+    //__class__ , constante magique, récupère le nom de la classe courante 
+    static function register(){     
         spl_autoload_register([
-            __CLASS__, //__class__ , constante magique, récupère le nom de la classe courante 
-             'autoload']); //on appelle la fonction autoload, écrite juste en dessous
+            __CLASS__, 
+            'autoload']); //on appelle la fonction autoload, écrite juste en dessous
     }
 
     static function autoload($class_name){

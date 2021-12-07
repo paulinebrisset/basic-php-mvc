@@ -10,7 +10,11 @@
     
     use App\Autoload;
     use App\Main\Main;
-    /****Autoloader *****/
+    use App\Models\Model;
+use App\Models\Table\ModelItems;
+use App\Models\Table\ModelUtilisateurs;
+
+/****Autoloader *****/
     
         // On charge le fichier Autoload
     require_once ROOT.'\Autoload.php';
@@ -23,5 +27,13 @@
         //On démarre l'application
         var_dump ($app);
     $app->start();
+    $mesItemps=new ModelItems();
+    var_dump($mesItemps);
+    echo"<br/>";
+    var_dump ($mesItemps->findAll());
+    $mesUsers= new ModelUtilisateurs();
+  
+    var_dump ($mesUsers);
+    echo ($mesUsers->findAll());
     ?>
     
