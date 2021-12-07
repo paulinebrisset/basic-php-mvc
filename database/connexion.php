@@ -1,21 +1,22 @@
 <?php
 
-//----------------------------- parametrage accès à cette database
-$host 	= 'localhost'	;
-$dbname  = 'utilisateurs' 		;
-$usrBdd	= 'dwwm_2021' 		;
-$pwdBdd	= 'Afpar2021!' 			;
-//----------------------------- /parametrage 
-$strBdd = 'mysql:host='.$host.';dbname='.$dbname.';charset=utf8;' ;
+namespace Database;
+//on va garder la connexion à la database dans une variable accessible de partout poru que ce soit plus simple d'utilisation
+class Connexion {
 
-//------------------------------ on tente une connexion au serveur sgbd
-//------------------------------ si OK, instance PDO créée
-//------------------------------ si KO, instance vaut null 
-try { 
-	// instance de pdo identifiant la database visée
-	$instancePdo= new PDO( $strBdd, $usrBdd, $pwdBdd );
-} catch (Exception $e) { 
-	die('Erreur fatale : ' . $e->getMessage());
+    const DB_NAME='miniprojetphp';
+    const DB_USER='dwwm_2021';
+    const DB_PASS='Afpar2021!';
+    const DB_HOST='localhost';
+
+    private static $database;
+
+    public static function getDatabase () {
+    //on ne va pas initialiser la connexion à chaque fois que l'on utilise la fonction, mais seulement si la variable n'est pas encore initialisée
+        if(self::$database === null) {
+            self::$database = new Database(self::DB_NAME,self::DB_NAME,self::DB_USER,self::DB_PASS,self::DB_HOST);
+        }
+        return self::$database;
+    }
 }
-
 ?>

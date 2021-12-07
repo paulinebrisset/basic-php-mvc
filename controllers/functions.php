@@ -65,5 +65,4 @@ function barreDeNavigationComplete () {
         </li>');
     } 
 }
-
-?>
+/*************************TESTS **********************************/

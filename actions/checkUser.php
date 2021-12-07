@@ -1,4 +1,0 @@
-<?php
-include './logInDatabase.php';
-
-?>
