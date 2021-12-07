@@ -1,6 +1,6 @@
 <?php
 
-namespace Database;
+namespace App\Main;
 use \PDO; //on met ça pour que à chaque "PDO" qui cherche la classe à la racine, et pas dans le namespace Database. 
 
 class Database {

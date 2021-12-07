@@ -1,7 +1,8 @@
 <?php
 
-namespace Database;
+namespace App\Main;
 //on va garder la connexion à la database dans une variable accessible de partout poru que ce soit plus simple d'utilisation
+
 class Connexion {
 
     const DB_NAME='miniprojetphp';

@@ -1,9 +1,27 @@
 <?php
 
-namespace Database\Table;
-use Database\Connexion;
+namespace App\Models\Table;
+use App\Main\Connexion;
+
+//Gestion des articles
 
 class Item {
+    //j'ai mis en attribut les champs de la table que je prévois pour stocker les articles 
+    private $droit;
+    private $titre;
+    private $description;
+    private $prix;
+    private $publie;
+    private $date;
+    private $url;
+
+//Constructeur. Je veux qu'un compte utilisateur soit défini pour chaque produit mis en vente. 
+    public function __construct(User $droit, $titre, $publie=false ){
+        $this->droit=$droit;
+        $this->titre = $titre;
+        $this->publie = $publie;
+    }
+    
     public static function getLast() {
         return Connexion::getDatabase()->query('SELECT * FROM items',__CLASS__);
     }
