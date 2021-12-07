@@ -1,7 +1,7 @@
 <?php
 namespace App\Models;
-use App\Main\Connexion;
+use App\Main\Database;
 
-class Models extends Connexion{
-    
+class Models extends Database
+
 }
