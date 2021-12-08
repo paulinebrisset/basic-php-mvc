@@ -3,10 +3,8 @@ namespace App\Models;
 use App\Main\Database;
 use PDO;
 /*
-GENIUS
-Ici je met tout ce qui va me servir à manipuler les données. C'est un modèle général, je 
-vais créer un modèle pour chaque table de la bdd qui contiendra 
-les informations qui lui sont spécifiques.
+    Ici je met tout ce qui va me servir à manipuler les données. C'est un modèle général, je vais créer un modèle pour chaque table de la bdd qui contiendra 
+    les informations qui lui sont spécifiques.
 */
 
 class Model extends Database{
@@ -71,12 +69,14 @@ I: array $criteres Tableau de critères
             $valeurs[]= $valeur;
         }
 
-        // On transforme le tableau "champs" en chaîne de caractères séparée par des AND
-       // implode : méthode php qui rassemble les éléments d'un tableau en une chaîne
-        $liste_champs = implode(' AND ', $champs);
+        /*implode : méthode php qui rassemble les éléments d'un tableau en une chaîne
+            On transforme le tableau "champs" en chaîne de caractères séparée par des AND si il y a plusieurs champs à sélectionner
+            (le premier argument de implode, ici 'AND', est un séparateur qui est utilisé que si il  y a plusieurs éléments dans le tableau)
+       */
+         $liste_champs = implode(' AND ', $champs);
 
         // On exécute la requête
-        $query = $this->executerRequete("SELECT * FROM ".$this->table." WHERE ".$liste_champs.", ".$valeurs);
+        $query = $this->executerRequete("SELECT * FROM {$this->table} WHERE $liste_champs", $valeurs);
         return $query->fetchAll();
     }
 

@@ -21,16 +21,12 @@ class Main {
 */
     
     public function start(){
-        echo ("Main fonctionne");
 
 /*******NETTOYAGE D'URL ET ON EVITE LE DUPLICATE CONTENT ***********/
 
         //On va retirer le "trailing slash" éventuel de l'Url
         // On récupère l'adresse url
         $uri = $_SERVER['REQUEST_URI'];
-        echo ("<br/><h1><b> var_dump de uri dans Main.php</b></h1><br/>");
-        var_dump ($uri);
-
         /*
             On vérifie si elle n'est pas vide et si elle se termine par un slash (uri[-1]===/)
             -> Si c'est le cas, on enlève le / parce qu'il ne sert à rien :
@@ -83,8 +79,8 @@ class Main {
             si pas de param, on utilise la méthode index
         */
             $action = isset($params[0]) ? array_shift($params) : 'index';   
-            echo ("<br/><h1><b> var_dump de action dans Main.php</b></h1><br/>");
-            var_dump($action);
+            // echo ("<br/><h1><b> var_dump de action dans Main.php</b></h1><br/>");
+            // var_dump($action);
 
             if(method_exists($controller, $action)){
             /* 
@@ -92,14 +88,19 @@ class Main {
                 on appelle la méthode en envoyant les paramètres 
                 sinon on l'appelle "à vide"
             */
-                (isset($params[0])) ? $controller->$action($params) : $controller->$action();    
+            /*    
+                ancienne version :  (isset($params[0])) ? $controller->$action($params) : $controller->$action();
+                cela permettait de passer des paramètres complémentaires sous forme de un tableau
+                maintenant -> on veut un entier directement. call_user_func_array permet de faire la conversion
+            */
+                (isset($params[0])) ? call_user_func_array([$controller,$action], $params) : $controller->$action();   
             }else{
                 /*
                     si il y a un param de méthode mais que cette méthode n'existe pas, 
                     on envoie le code réponse 404
                 */
                 http_response_code(404);
-                echo "l102 La page recherchée n'existe pas";
+                echo "La page recherchée n'existe pas";
             }
         } else {
             /*
