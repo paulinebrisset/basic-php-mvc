@@ -28,6 +28,15 @@ class ModelItems extends Model {
     public function setId(int $id):self {
         $this->id = $id;
         return $this;
+        /*
+        return $this permettra de créer les différentes infos en une fois depuis notre instance de modèle
+            par exemple faire 
+            $item = new Item;
+            $article = $item 
+            -> setTitre ('Mon titre')
+            ->setDecription('Description')
+            etc etc
+        */
     }
 
     /* Obtenir la valeur de titre */

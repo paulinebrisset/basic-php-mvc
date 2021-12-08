@@ -1,0 +1,1 @@
+<h2>Page des articles (views>items>index.php)</h2>
