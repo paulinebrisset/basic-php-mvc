@@ -1,8 +1,5 @@
-<!DOCTYPE html>
-<html lang="fr"> 
-
 <?php 
-echo ("<br/><h1><b> page index.php du dossier public</b></h1><br/>");
+
 
 //C'est le fichier d'entrée de mon application. Il appelle Main, qui est mon routeur.
 
@@ -22,6 +19,7 @@ use App\Models\Table\ModelUtilisateurs;
     require_once ROOT.'\Autoload.php';
         //on a fait une fonction static, c'est pour ça que l'on n'a pas besoin d'instancier la classe autoload pour utiliser register
     Autoload::register();
+    
 
 /*****Main******/
         //On instancie Main qui va être chargé du lancement de l'application
@@ -31,6 +29,8 @@ use App\Models\Table\ModelUtilisateurs;
     $app->start();
 
 /*****Mes petits tests à supprimer *****/
+/*
+echo ("<br/><h2><b> page index.php du dossier public</b></h2><br/>");
 echo ("<br/><h2><b>Retour à la page index.php du dossier public</b></h2><br/>");
    
     echo ("<br/><b> var dump de get</b><br/>");
@@ -51,6 +51,6 @@ echo ("<br/><h2><b>Retour à la page index.php du dossier public</b></h2><br/>")
     var_dump ($mesUsers);
     echo ("<br/><b> var dump d'un find All sur un new modelutilisateur/b><br/>");
     echo ($mesUsers->findAll());
-
+*/
     ?>
     

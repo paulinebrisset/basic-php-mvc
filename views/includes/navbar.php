@@ -1,3 +1,4 @@
+<?php use App\Controllers\UtilisateursController;?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" id="titreNavBar" href="#">Mon super site</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -6,10 +7,10 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
+        <a class="nav-link" href="/items">Articles</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Pricing</a>
@@ -17,12 +18,13 @@
       <li class="nav-item">
         <a class="nav-link disabled" href="#">Disabled</a>
       </li>
-      <?php barreDeNavigationComplete ()?>
+      <?php //barreDeNavigationComplete ()?>
     </ul>
   </div>
-  <?php afficherLeTitre(); ?>
-  <?php quelsBoutonsAfficher ()?>
+  <?php //afficherLeTitre(); ?>
+  <?php //include '../Controllers/functions.php' ?>
+  <?php UtilisateursController::quelsBoutonsAfficher ()?>
  
-  <?php include './modalConnexion.php';
-  include './modalCreerCompte.php' ?>
+  <?php include '../views/modalConnexion.php';
+  include '../views/modalCreerCompte.php' ?>
 </nav>

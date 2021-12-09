@@ -1,1 +1,1 @@
-<p>Page d'accueil du site</p>
+<h2>Page index dans main</h2>

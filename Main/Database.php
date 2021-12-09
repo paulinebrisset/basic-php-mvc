@@ -1,5 +1,5 @@
 <?php
-/****Lien vers le tuto retenu : https://nouvelle-techno.fr/articles/live-coding-php-oriente-objet-base-de-donnees */
+/**** Lien vers le tuto retenu : https://nouvelle-techno.fr/articles/live-coding-php-oriente-objet-base-de-donnees ***/
 namespace App\Main;
 use PDO; //on met ça pour que à chaque "PDO" qui cherche la classe à la racine, et pas dans le namespace qu'on vient de définir. 
 use PDOException;
@@ -15,15 +15,16 @@ class Database extends PDO{
     private const DBUSER = 'dwwm_2021';
     private const DBPASS = 'Afpar2021!';
     private const DBNAME = 'miniprojetphp';
+    private const DBCHARSET = 'utf8';
     
     private function __construct(){
         // je crée la chaîne de connexion
-        $_dsn = 'mysql:dbname='. self::DBNAME . ';host=' . self::DBHOST;
+        $_dsn = 'mysql:dbname='. self::DBNAME . ';host=' . self::DBHOST . ';charset='. self::DBCHARSET;
         // On appelle le constructeur de la classe PDO
         try{
             parent::__construct($_dsn, self::DBUSER, self::DBPASS);
 
-            $this->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, 'SET NAMES utf8_general_ci');
+            //$this->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, 'SET NAMES utf8_general_ci');
             $this->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);//a chaque fois qu'on va faire un fetch ou un fetchAll, on aura par défaut un tableau associatif
             $this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); //récupérer les erreurs
         

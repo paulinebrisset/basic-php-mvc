@@ -1,6 +1,14 @@
 <!-- Modal Connexion -->
-<div class="modal fade" 
- id="modalConnexion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<?php
+
+  use App\Controllers\UtilisateursController;
+
+  if (isset($_POST['email'])){
+    UtilisateursController::verifierUtilisateur($_POST['email'],$_POST['emdp']);
+  }
+?>
+
+<div class="modal fade" id="modalConnexion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -10,7 +18,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form id="connexion" method="post" action="./controllers/checkUser.php">
+        <form id="connexion" method="post" action="">
           <div class=row>
             <div class=col-12>
               <label for="email">Email</label>
@@ -33,7 +41,7 @@
               <a href="">Mot de passe oublié?</a>
             </div>
             <div>
-              <p><?php pbDeMotDePasse ()?></p>
+              <p><?php UtilisateursController::pbDeMotDePasse() ?></p>
             </div>
           </div>
         </form>

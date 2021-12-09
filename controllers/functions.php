@@ -37,11 +37,11 @@ function afficherLeTitre(){
 
 /** Gestion affichage si erreur de connexion *****/
 
-function pbDeMotDePasse () {
-    if (isset($_SESSION['erreurMdp']) && $_SESSION['erreurMdp']==true) {
-        echo ("Problème d'authentification, veuillez réessayer");
-    }
-}
+// function pbDeMotDePasse () {
+//     if (isset($_SESSION['erreurMdp']) && $_SESSION['erreurMdp']==true) {
+//         echo ("Problème d'authentification, veuillez réessayer");
+//     }
+// }
 function verifierErreurMdp(){
     if (isset($_SESSION['erreurMdp']) && $_SESSION['erreurMdp']==true) {
         echo ("<script>$('#modalConnexion').modal()</script>");

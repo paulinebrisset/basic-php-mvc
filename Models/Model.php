@@ -14,9 +14,9 @@ class Model extends Database{
     private $db;
 
 /*
-M Méthode principale qui va préparer les requêtes dans tous les cas de figure, elle va aussi vérifier si elle doit préparer ou non la requête
-O: PDOStatement|false (ce retour va être récupéré pour faire un fetchAll dessus)
-I: string $sql Requête SQL à exécuter + array $attributes Attributs à ajouter à la requête 
+    M Méthode principale qui va préparer les requêtes dans tous les cas de figure, elle va aussi vérifier si elle doit préparer ou non la requête
+    O: PDOStatement|false (ce retour va être récupéré pour faire un fetchAll dessus)
+    I: string $sql Requête SQL à exécuter + array $attributes Attributs à ajouter à la requête 
 */
     public function executerRequete(string $sql, array $attributs = null){
         // On récupère l'instance de Database, (instance d'instance de PDO, ça aurait pu être juste instance de PDO)
@@ -39,9 +39,9 @@ I: string $sql Requête SQL à exécuter + array $attributes Attributs à ajoute
 /*********************PARTIE LECTURE DES DONNEES *********************/
 
 /* findAll
-M : Sélection de tous les enregistrements d'une table, retourne un tableau 
-O : Tableau des enregistrements trouvés
-I: rien
+    M : Sélection de tous les enregistrements d'une table, retourne un tableau 
+    O : Tableau des enregistrements trouvés
+    I: rien
 */
      
     public function findAll() {
@@ -80,10 +80,11 @@ I: array $criteres Tableau de critères
         return $query->fetchAll();
     }
 
+
 /* find 
-M : Sélection d'un enregistrement directement avec son id
-O : Tableau contenant l'enregistrement trouvé
-I : $id id de l'enregistrement
+    M : Sélection d'un enregistrement directement avec son id
+    O : Tableau contenant l'enregistrement trouvé
+    I : $id id de l'enregistrement
 */
 
     public function find(int $id) {

@@ -23,11 +23,24 @@ class ItemsController extends Controller{
         render se chargera de générer la vue
         */
 
-
         $this->render('items/index',['articles'=>$articles]);
     }
-    public function login(){
-        echo ("<b>function login dans ItemController</b>");
+    /**
+     * M Méthode permettant d'afficher un article à partir de son slug
+     * I @param int $id
+     * O @return void
+     */
 
+    public function lire(int $id){
+        // On instancie le modèle
+        $instanceModel = new ModelItems;
+
+        // On récupère les données
+        $item = $instanceModel->find($id);
+
+        $this->render('items/lire', compact('item'));
+        /* Dernière ligne qu'on aurait aussi bien pu écrire
+            $this->render('items/index',['item'=>$item]);
+        */
     }
 }
