@@ -1,8 +1,8 @@
 <?php
 namespace App\Controllers;
-use App\Models\Table\ModelItems;
+use App\Models\Table\ModelCategorie;
 
-class ItemsController extends Controller{
+class CategorieController extends Controller{
 
     public function index(){
     /*
@@ -13,9 +13,9 @@ class ItemsController extends Controller{
     */
 
         //instancier la classe ModelItems
-        $articlesModel = new ModelItems;
+        $instanceCategorie = new ModelCategorie;
         //On va chercher toutes les annonces publiées grâce à une méthode du Modèle
-        $articles=$articlesModel->findBy(['publie'=>1]);
+        $categories=$instanceCategorie->findAll();
         /*
         Là c'est une méthode de Controller. On lui file  
         1 - le nom du fichier qui va ouvrir les résultats
@@ -23,23 +23,22 @@ class ItemsController extends Controller{
         render se chargera de générer la vue
         */
 
-        $this->render('items/index',['articles'=>$articles]);
+        $this->render('categorie/index',['categories'=>$categories]);
     }
     /**
      * M Méthode permettant d'afficher un article à partir de son slug
      * I @param int $id
      * O @return void
      */
-
-    
-     public function lire(int $id = 0){
+ 
+    public function lire(int $id=0){
         // On instancie le modèle
-        $instanceModel = new ModelItems;
+        $instanceCategorie = new ModelCategorie;
 
         // On récupère les données
-        $item = $instanceModel->find($id);
+        $categorie = $instanceCategorie->find($id);
 
-        $this->render('items/lire', compact('item'));
+        $this->render('categorie/lire', compact('categorie'));
         /* Dernière ligne qu'on aurait aussi bien pu écrire
             $this->render('items/index',['item'=>$item]);
         */

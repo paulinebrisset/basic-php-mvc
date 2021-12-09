@@ -1,33 +1,35 @@
 <?php
 
 namespace App\Controllers;
-
+use App\Controllers\MainController;
 use App\Models\Table\ModelUtilisateurs;
-// session_start();
 
-class ConnexionController extends Controller{
+class ConnectionController extends Controller{
 
-    public function index (){
-        $this->render('connection/index');
-    }
 
-    static function verifierUtilisateur(string $mail, string $mdp){
+    public function verifierUtilisateur(string $mail, string $mdp){
         $_SESSION['erreurMdp'] = false;
+       
         $utilisateur = new ModelUtilisateurs;
-
         $cetUtilisateur = $utilisateur->findBy(['mail' => $mail, 'mdp' => $mdp]);
-        echo ("Je passe par la fonction verifier utilisateur dans UtilisateursController");
+
+        echo ("Je passe par la fonction verifier utilisateur dans ConnectionController");
+        
         foreach ($cetUtilisateur as $utilisateurExiste) {
 
             if (($utilisateurExiste['mail'] == $mail) && ($utilisateurExiste['mdp'] == $mdp)) {
                 $_SESSION['utilisateur'] = $utilisateurExiste;
                 $_SESSION['erreurMdp'] = false;
-                header("location:../index.php");
+
+                $newMain = new MainController;
+                $newMain->render('main/index', [], 'home');
                 exit();
             }
-        //le mail ou le mdp ne correspond pas
-        $_SESSION['erreurMdp'] = true;
-        header("location:../index.php");
+            //le mail ou le mdp ne correspond pas
+            $_SESSION['erreurMdp'] = true;
+            echo ("Pd d'authentification");
+            $newMain = new MainController;
+            $newMain->render('main/index', [], 'home');
         }
     }
 
@@ -41,14 +43,14 @@ class ConnexionController extends Controller{
 
 /*********** GESTION DE LA NAVBAR *********/
 
-    static function pbDeMotDePasse(){
+    public function pbDeMotDePasse(){
         if (isset($_SESSION['erreurMdp']) && $_SESSION['erreurMdp'] == true) {
             echo ("Problème d'authentification, veuillez réessayer");
         }
     }
 
 
-    static function quelsBoutonsAfficher(){
+    public function quelsBoutonsAfficher(){
         if (!(isset($_SESSION['utilisateur']))) {
 
         ?>
@@ -61,9 +63,19 @@ class ConnexionController extends Controller{
 
         <?php } else { ?>
 
-            <form method="post" action="./controllers/destructionVariables.php">
+            <form method="post" action="../Controllers/destructionVariables.php">
                 <input type="submit" class="btn btn-outline-dark my-2 my-sm-0 ml-3" value="Déconnection">
             </form>
         <?php }
+    }
+
+    static function afficherLeTitre(){
+        $titreParDefaut = 'Bonjour';
+        //si la variable $_SESSION['user'] a été créée et qu'elle contient qqch, on affiche le nom renseigné par l'utilisateur, sinon on affiche le titre du site par défaut
+        if (isset($_SESSION['utilisateur'])) {
+            echo ($_SESSION['utilisateur']['nom'] != "" ? 'Bonjour ' . ucfirst($_SESSION['utilisateur']['nom']) : $titreParDefaut);
+        } else {
+            echo ($titreParDefaut);
+        }
     }
 }

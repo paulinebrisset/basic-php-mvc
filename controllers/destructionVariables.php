@@ -1,13 +1,17 @@
-<?php 
+<?php
+namespace App\Controller;
+use App\Controllers\MainController;
 
-// session_start();
 
-// // remove all session variables
-// session_unset();
+session_start();
 
-// // destroy the session
-// session_destroy();
+// remove all session variables
+session_unset();
 
-// header ("location:../index.php");
-// exit;
+// destroy the session
+session_destroy();
+
+$redirection = new MainController;
+$redirection->render('main/index', [], 'home');
+exit;
 ?>

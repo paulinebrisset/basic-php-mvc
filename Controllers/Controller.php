@@ -45,13 +45,14 @@ abstract class Controller {
     */
 
         $content = ob_get_clean();
-        if ($template=="home"){
-            require_once(ROOT.'/Views/'.$template.'.php');
-        } else {
-            // On fabrique le "template" avec dfault.php qui a un espace prévu pour la variable $contenu
+
+        // if ($template=="home"){
+        //     require_once(ROOT.'/Views/'.$template.'.php');
+        // } else {
+            // On fabrique le "template" avec default.php qui a un espace prévu pour la variable $contenu
             require_once(ROOT.'/Views/'.$template.'.php');
             require_once(ROOT.'/Views/'.$fichier.'.php');
-        }
+        //}
 
     }
 }

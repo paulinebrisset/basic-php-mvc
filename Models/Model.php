@@ -76,7 +76,7 @@ I: array $criteres Tableau de critères
          $liste_champs = implode(' AND ', $champs);
 
         // On exécute la requête
-        $query = $this->executerRequete("SELECT * FROM {$this->table} WHERE $liste_champs", $valeurs);
+        $query = $this->executerRequete('SELECT * FROM '. $this->table .' WHERE '. $liste_champs, $valeurs);
         return $query->fetchAll();
     }
 

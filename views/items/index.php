@@ -1,10 +1,10 @@
-<h2>Page des articles (views>items>index.php)</h2>
+<h2>Items</h2>
 <div class="container">
     <div class="row">
         <?php foreach ($articles as $article) { ?>
 
             <div class="card col-12 col-sm article">
-                <h3><a href="/item/lire/<?php echo $article["id"] ?>">
+                <h3><a href="items/lire/<?php echo $article["id"] ?>">
                         <?php echo ($article['titre']) ?></a></h3>
                 <h4><?php echo ($article['prix'] . '€') ?></h4>
 
@@ -17,7 +17,7 @@
 
         $articleinexistant = new ModelItems;
         //On va chercher toutes les annonces publiées grâce à une méthode du Modèle
-        $articles = $articleinexistant->findBy(['publie' => 2]);
+        $articles = $articleinexistant->findBy(['publie' => 8]);
         /*
         Là c'est une méthode de Controller. On lui file  
         1 - le nom du fichier qui va ouvrir les résultats

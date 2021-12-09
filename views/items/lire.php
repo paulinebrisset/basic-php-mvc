@@ -1,5 +1,5 @@
 <article>
-    <h1><?=$article["titre"]?></h1>
-    <div><?=$article["descritpion"]?></div>
-    <div><?=$article["prix"]?></div>
+    <h1><?=$item["titre"]?></h1>
+    <div><?=$item["description"]?></div>
+    <div><?=$item["prix"]."€"?></div>
 </article>

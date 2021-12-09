@@ -79,8 +79,6 @@ class Main {
             si pas de param, on utilise la méthode index
         */
             $action = isset($params[0]) ? array_shift($params) : 'index';   
-            // echo ("<br/><h1><b> var_dump de action dans Main.php</b></h1><br/>");
-            // var_dump($action);
 
             if(method_exists($controller, $action)){
             /* 
@@ -93,7 +91,8 @@ class Main {
                 cela permettait de passer des paramètres complémentaires sous forme de un tableau
                 maintenant -> on veut un entier directement. call_user_func_array permet de faire la conversion
             */
-                (isset($params[0])) ? call_user_func_array([$controller,$action], $params) : $controller->$action();   
+                (isset($params[0])) ? call_user_func_array([$controller,$action], $params) : $controller->$action(); 
+
             }else{
                 /*
                     si il y a un param de méthode mais que cette méthode n'existe pas, 

@@ -1,10 +1,12 @@
 <!-- Modal Connexion -->
 <?php
 
-  use App\Controllers\UtilisateursController;
-
+  use App\Controllers\ConnectionController;
+  $essaiConnexion = new ConnectionController;
+  
+  
   if (isset($_POST['email'])){
-    UtilisateursController::verifierUtilisateur($_POST['email'],$_POST['emdp']);
+    $essaiConnexion->verifierUtilisateur($_POST['email'],$_POST['emdp']);
   }
 ?>
 
@@ -41,7 +43,7 @@
               <a href="">Mot de passe oublié?</a>
             </div>
             <div>
-              <p><?php UtilisateursController::pbDeMotDePasse() ?></p>
+              <p><?php $essaiConnexion->pbDeMotDePasse() ?></p>
             </div>
           </div>
         </form>

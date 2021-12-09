@@ -1,4 +1,4 @@
-<?php
+<?php/*
 ///activer les variables de session
 session_start();
 //se préconnecter à la database
@@ -69,5 +69,5 @@ function erreur () {
     header ("location:../index.php");
 }
 header ("location:../index.php");
-
+*/
 ?>
