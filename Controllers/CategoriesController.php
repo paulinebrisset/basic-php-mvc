@@ -2,7 +2,7 @@
 namespace App\Controllers;
 use App\Models\Table\ModelCategorie;
 
-class CategorieController extends Controller{
+class CategoriesController extends Controller{
 
     public function index(){
     /*
@@ -23,7 +23,7 @@ class CategorieController extends Controller{
         render se chargera de générer la vue
         */
 
-        $this->render('categorie/index',['categories'=>$categories]);
+        $this->render('categories/index',['categories'=>$categories]);
     }
     /**
      * M Méthode permettant d'afficher un article à partir de son slug

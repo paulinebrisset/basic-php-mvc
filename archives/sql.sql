@@ -26,6 +26,13 @@ CREATE TABLE `miniprojetphp`.`items` (
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
 
+CREATE TABLE `miniprojetphp`.`categories` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `titre` INT NOT NULL,
+    `description` INT NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB;
+
 INSERT INTO
     `items` (
         `id`,

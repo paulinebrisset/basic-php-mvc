@@ -14,11 +14,6 @@ $monUtilisateur->enregistrerUnNouvelUtilisateurDansLaBdd ($_POST['nom'], $_POST[
 
 // si c'est une connexion, je crée une instance et je le check, si c'est une instance, je crée une instance et je l'enregistre
 
-
-
-
-
-
 // executerLaRequete () ;
 // // verifierLaBonneExecutionDeLaRequete ();
 

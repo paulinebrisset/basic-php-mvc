@@ -7,10 +7,10 @@ use App\Models\Model;
  */
 class ModelCategorie extends Model {
     protected $id;
-    protected $nom;
+    protected $titre;
     protected $description;
 
     public function __construct(){
-        $this->table = 'items';
+        $this->table = 'categories';
     }
 }

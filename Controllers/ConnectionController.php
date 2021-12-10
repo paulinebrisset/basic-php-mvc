@@ -12,8 +12,6 @@ class ConnectionController extends Controller{
        
         $utilisateur = new ModelUtilisateurs;
         $cetUtilisateur = $utilisateur->findBy(['mail' => $mail, 'mdp' => $mdp]);
-
-        echo ("Je passe par la fonction verifier utilisateur dans ConnectionController");
         
         foreach ($cetUtilisateur as $utilisateurExiste) {
 
@@ -21,26 +19,35 @@ class ConnectionController extends Controller{
                 $_SESSION['utilisateur'] = $utilisateurExiste;
                 $_SESSION['erreurMdp'] = false;
 
-                $newMain = new MainController;
-                $newMain->render('main/index', [], 'home');
+               $this->render('main/index');
                 exit();
             }
+        }
             //le mail ou le mdp ne correspond pas
             $_SESSION['erreurMdp'] = true;
-            echo ("Pd d'authentification");
-            $newMain = new MainController;
-            $newMain->render('main/index', [], 'home');
-        }
+            
+            $newMainb = new MainController;
+            $newMainb->render('main/index');
     }
 
-    static function isTheUserAnAdmin(){
+    public function isTheUserAnAdmin(){
         if (isset($_SESSION['utilisateur']) && $_SESSION['utilisateur']['droit'] == true) {
             return true;
         } else {
             return false;
         }
     }
+    public function deconnexion() {
+        // remove all session variables
+        session_unset();
 
+        // destroy the session
+        session_destroy();
+
+        $redirection = new MainController;
+        $redirection->render('main/index', [], 'home');
+        exit;
+    }
 /*********** GESTION DE LA NAVBAR *********/
 
     public function pbDeMotDePasse(){
@@ -49,7 +56,20 @@ class ConnectionController extends Controller{
         }
     }
 
+    public function verifierErreurMdp(){
+        if (isset($_SESSION['erreurMdp']) && $_SESSION['erreurMdp']==true) {
+            echo ("<script>$('#modalConnexion').modal()</script>");
+        }
+    }
 
+    public function barreDeNavigationComplete () {
+        if (isset($_SESSION['utilisateur']) && $_SESSION['utilisateur']['droit'] == true) {
+            echo('
+            <li class="nav-item">
+                <a class="nav-link" href="gestionArticles">Gérer mes articles</a>
+            </li>');
+        } 
+    }
     public function quelsBoutonsAfficher(){
         if (!(isset($_SESSION['utilisateur']))) {
 
@@ -63,8 +83,8 @@ class ConnectionController extends Controller{
 
         <?php } else { ?>
 
-            <form method="post" action="../Controllers/destructionVariables.php">
-                <input type="submit" class="btn btn-outline-dark my-2 my-sm-0 ml-3" value="Déconnection">
+            <form method="post" action="">
+                <input type="submit" class="btn btn-outline-dark my-2 my-sm-0 ml-3" value="Déconnection" name="deconnection">
             </form>
         <?php }
     }
@@ -78,4 +98,6 @@ class ConnectionController extends Controller{
             echo ($titreParDefaut);
         }
     }
+
+
 }
