@@ -4,6 +4,7 @@
 //C'est le fichier d'entrée de mon application. Il appelle Main, qui est mon routeur.
 
 use App\Autoload;
+use App\Main\Router;
 use App\Main\Main;
 use App\Models\Model;
 use App\Models\Table\ModelItems;
@@ -20,10 +21,10 @@ use App\Models\Table\ModelUtilisateurs;
         //on a fait une fonction static, c'est pour ça que l'on n'a pas besoin d'instancier la classe autoload pour utiliser register
     Autoload::register();
     
-echo ("page index de public");
 /*****Main******/
         //On instancie Main qui va être chargé du lancement de l'application
-    $app=new Main(); //Main sera le router 
+    $app=new Main;
+ //Main sera le router 
         //On démarre l'application
     //var_dump ($app);
     $app->start();

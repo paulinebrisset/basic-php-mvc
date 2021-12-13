@@ -10,7 +10,7 @@ if (isset($_POST['submit'])) {
 
 <h2>Modifier un article</h2>
 <article>
-    <form method="post" action="#">
+    <form method="post" action="">
         <div class="form-group">
             <label for="titre">Nom de l'article</label>
             <input type="text" class="form-control" name="titre" value="<?= $item["titre"] ?>">

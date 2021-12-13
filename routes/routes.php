@@ -14,9 +14,9 @@ return array (
 'http://localhost/pauline/projetscolaire/public/categories/lire/{$}' => '<CategoriesController>/<lire>',
 'http://localhost/pauline/projetscolaire/public/categories/lire' => '<CategoriesController>/<lire>',
 /*Gestion des articles*/
-'http://localhost/pauline/projetscolaire/public/categories/index.php' => '<GestionArticlesController>/<index>',
-'http://localhost/pauline/projetscolaire/public/categories' => '<GestionArticlesController>/<index>',
-'http://localhost/pauline/projetscolaire/public/categories/editer/{$}' => '<GestionArticlesController>/<editer',
-'http://localhost/pauline/projetscolaire/public/categories/editer' => '<GestionArticlesController>/<editer>'
+'http://localhost/pauline/projetscolaire/public/gestionArticles/index.php' => '<GestionArticlesController>/<index>',
+'http://localhost/pauline/projetscolaire/public/gestionArticles' => '<GestionArticlesController>/<index>',
+'http://localhost/pauline/projetscolaire/public/gestionArticles/editer/{$}' => '<GestionArticlesController>/<editer>',
+'http://localhost/pauline/projetscolaire/public/gestionArticles/editer/' => '<GestionArticlesController>/<editer>'
 )
 ?>

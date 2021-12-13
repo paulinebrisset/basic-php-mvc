@@ -4,7 +4,7 @@
 <?php include '../views/includes/head.php' ?>
 
 <body>
-    <h2>Default</h2>
+
 
     <div class="container">
         <?= $content ?>

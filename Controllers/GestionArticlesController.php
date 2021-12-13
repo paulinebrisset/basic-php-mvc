@@ -28,20 +28,27 @@ public function index(){
     }
 
 /****Affiche d'article à modifier */
-    public function modifier(int $id = 1){
+    public function editer(int $id = 1){
         // On instancie le modèle
         $instanceModel = new ModelItems;
 
         // On récupère les données
         $item = $instanceModel->find($id);
 
-        $this->render('gestionArticles/modifier', compact('item'));
+        $this->render('gestionArticles/editer', compact('item'));
         /* Dernière ligne qu'on aurait aussi bien pu écrire
             $this->render('items/index',['item'=>$item]);
         */
     }
-    public function actualiserArticle(int $id, string $titre, string $description, $prix){
-        $instanceGestionArticleController= new GestionArticlesController;
+/****Création d'un nouveal article */
+    public function creer(int $id = 1){
+        $this->render('gestionArticles/creer');
+        /* Dernière ligne qu'on aurait aussi bien pu écrire
+            $this->render('items/index',['item'=>$item]);
+        */
+    }
+    public function actualiserArticle(int $id, string $titre, string $description, $publie, $prix){
+       
         // On instancie le modèle items
         $instanceItem = new ModelItems;
         // appel à la mdification 
@@ -57,20 +64,36 @@ public function index(){
         $instanceItem-> setPublie($publie);
         
         $instanceItem->update($id,$instanceItem);
-
-        $instanceGestionArticleController->index();
+        
+        // $instanceGestionArticleController= new GestionArticlesController;
+        // $instanceGestionArticleController->index();
         /* Dernière ligne qu'on aurait aussi bien pu écrire
             $this->render('items/index',['item'=>$item]);
         */
     }
-// public function changerPublication () {
-//     $articles = new ModelItems;
-//     $_POST["publie"]
-   
-//     $articles['id']
-//     $articles['publie']
-//     $articlesModel = new ModelItems;
-//     public function update(int $id, Model $model),
-// }
+
+    public function creerArticle(string $titre, string $description, $prix, $publie, $categorie){
+        // On instancie le modèle items
+        $instanceItem = new ModelItems;
+        // appel à la mdification 
+        if ($publie == "true"){
+            $publie = true;
+            echo ("oui");
+        } else {
+            $publie = false;
+            echo"non";
+        }
+        $mesDonnees = [
+        'titre'=> $titre,
+        'description'=> $description,
+        'prix'=> $prix,
+        'publie'=> $publie,
+        'categorie'=>$categorie
+        ];
+
+        $monObjetRequete = new ModelItems;
+        $grandfinal=$monObjetRequete->creer($mesDonnees);
+
+    }
 }
   ?>
