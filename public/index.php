@@ -20,7 +20,7 @@ use App\Models\Table\ModelUtilisateurs;
         //on a fait une fonction static, c'est pour ça que l'on n'a pas besoin d'instancier la classe autoload pour utiliser register
     Autoload::register();
     
-
+echo ("page index de public");
 /*****Main******/
         //On instancie Main qui va être chargé du lancement de l'application
     $app=new Main(); //Main sera le router 

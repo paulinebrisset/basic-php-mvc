@@ -26,5 +26,51 @@ public function index(){
 
         $this->render('gestionArticles/index',['articles'=>$articles]);
     }
+
+/****Affiche d'article à modifier */
+    public function modifier(int $id = 1){
+        // On instancie le modèle
+        $instanceModel = new ModelItems;
+
+        // On récupère les données
+        $item = $instanceModel->find($id);
+
+        $this->render('gestionArticles/modifier', compact('item'));
+        /* Dernière ligne qu'on aurait aussi bien pu écrire
+            $this->render('items/index',['item'=>$item]);
+        */
+    }
+    public function actualiserArticle(int $id, string $titre, string $description, $prix){
+        $instanceGestionArticleController= new GestionArticlesController;
+        // On instancie le modèle items
+        $instanceItem = new ModelItems;
+        // appel à la mdification 
+        if (isset($_POST['publie'])){
+            $publie = true;
+        } else {
+            $publie = false;
+        }
+
+        $instanceItem-> setTitre ($titre);
+        $instanceItem-> setDescription ($description);
+        $instanceItem-> setPrix ($prix);
+        $instanceItem-> setPublie($publie);
+        
+        $instanceItem->update($id,$instanceItem);
+
+        $instanceGestionArticleController->index();
+        /* Dernière ligne qu'on aurait aussi bien pu écrire
+            $this->render('items/index',['item'=>$item]);
+        */
+    }
+// public function changerPublication () {
+//     $articles = new ModelItems;
+//     $_POST["publie"]
+   
+//     $articles['id']
+//     $articles['publie']
+//     $articlesModel = new ModelItems;
+//     public function update(int $id, Model $model),
+// }
 }
   ?>

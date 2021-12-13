@@ -32,7 +32,7 @@ class ItemsController extends Controller{
      */
 
     
-     public function lire(int $id = 0){
+     public function lire(int $id = 1){
         // On instancie le modèle
         $instanceModel = new ModelItems;
 
