@@ -174,7 +174,7 @@ O: self Retourne l'objet hydraté
 
         // On réorganise le tableau des paramètres pour l'exploiter
         foreach($model as $champ => $valeur){
-            // UPDATE annonces SET titre = ?, description = ?, actif = ? WHERE id= ?
+            // UPDATEpro annonces SET titre = ?, description = ?, actif = ? WHERE id= ?
             if($valeur !== null && $champ != 'db' && $champ != 'table'){
                 $champs[] = "$champ";
                 $valeurs[] = "$valeur";

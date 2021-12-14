@@ -44,40 +44,4 @@ class Database extends PDO{
     //Pour avoir une instance, il suffira de faire un Database::getinstance()
 }
 
-/*****************VESTIGES DE GRAFIKART ********************/
-    // private function getPDO() { //accesseur
-
-    //     //on ne veut pas qu'il initialise l'instance pour chaque nouvelle requête, donc on met un if avant
-    //     if($this->pdo===null){
-    //         //pourquoi il me met variables inconnues si j'utilise les variables de class? 
-    //         $pdo = new PDO('mysql:dbname='.$this->db_name.';host='$this->db_host.localhost', 'dwwm_2021','Afpar2021!');
-    //         //pour l'instant on affiche à max les erreurs pour pouvoir débugguer
-    //         $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-    //         $this->pdo = $pdo;
-    //     }
-
-    //     return $this->pdo;
-    // }
-
-    // //lancer la requête et récupérer les résultats sous forme de tableau associatif
-    // public function query($statement, $class_name){      
-    //     $requete = $this->getPDO()->query($statement);
-    //     /* doc fetch-class https://www.php.net/manual/fr/pdostatement.fetch.php*/
-    //     $datas = $requete->fetchAll(PDO::FETCH_CLASS, $class_name);
-    //     return $datas;
-    // }
-
-    // public function prepare($statement, $attributes, $class_name, $one =false) {
-    //     $requete= $this->getPDO()->prepare($statement);
-    //     $requete->execute($attributes);
-    //     $requete->setFetchMode(PDO::FETCH_CLASS,$class_name);
-    //         if($one){
-    //             $datas = $requete->fetch();
-    //         } else {
-    //             $requete->fetchAll($class_name);
-    //         }
-    // return $datas;
-    // }
-    
-//}
 ?>

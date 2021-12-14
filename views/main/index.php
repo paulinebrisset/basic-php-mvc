@@ -1,1 +1,1 @@
-<h2>Page index dans main</h2>
+<p class='blanc'>Merci de visiter notre site ! Choisissez des articles et n'oubliez pas de payer en partant</p>

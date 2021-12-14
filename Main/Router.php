@@ -1,14 +1,13 @@
 <?php 
 namespace App\Main;
 
-
 class Router
 {
     private $routes, $uri;
 
     public function __construct()
     {
-        $routesPath = $_SERVER['DOCUMENT_ROOT'].'/pauline/projetscolaire/public/routes/routes.php';
+        $routesPath = $_SERVER['DOCUMENT_ROOT'].'/routes.php';
         $this->routes = include($routesPath);
     }
 
@@ -50,7 +49,7 @@ class Router
                 }
                 $controllerObject = new $controllerName;
 
-                //On cherche les paramÃ¨tres dans l'URL
+                //On cherche les paramètres dans l'URL
                preg_match_all('!\d+!', $uri, $parameters);
 
                 $result = call_user_func_array(array($controllerObject, $actionName), $parameters);

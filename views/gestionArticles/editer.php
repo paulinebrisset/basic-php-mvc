@@ -4,13 +4,13 @@ use App\Controllers\GestionArticlesController;
 
 if (isset($_POST['submit'])) {
     $gestionArticleController = new GestionArticlesController;
-    $gestionArticleController->actualiserArticle(($item["id"]),$_POST['titre'],$_POST['description'],$_POST['prix']);
+    $gestionArticleController->actualiserArticle(($item["id"]),$_POST['titre'],$_POST['description'],$_POST['publie'],$_POST['prix']);
 }
 ?>
-
+ <div class="page">
 <h2>Modifier un article</h2>
 <article>
-    <form method="post" action="">
+    <form method="post" action="" class="blanc">
         <div class="form-group">
             <label for="titre">Nom de l'article</label>
             <input type="text" class="form-control" name="titre" value="<?= $item["titre"] ?>">
@@ -22,8 +22,8 @@ if (isset($_POST['submit'])) {
         <div class="form-group">
             <label for="publie">Visibilité</label>
             <select class="form-control" name="publie">
-                <option>Publié</option>
-                <option>Masqué</option>
+                <option value="true">Publié</option>
+                <option value="false">Masqué</option>
             </select>
             <input type="checkbox" checked data-toggle="toggle" data-size="mini" data-on="Publié" data-off="Masqué" data-onstyle="info" data-offstyle="default" name="publication">
         </div>
@@ -38,8 +38,9 @@ if (isset($_POST['submit'])) {
         </div>
         <div class="form-group">
             <label for="prix">Prix</label>
-            <input type="text" class="form-control" name="prix" placeholder="<?= $item["prix"] . "€" ?>">
+            <input type="text" class="form-control" name="prix" value="<?= $item["prix"] ?>" placeholder="€">
         </div>
         <button type="submit" class="btn btn-outline-dark" name="submit">Valider</button>
     </form>
 </article>
+ </div>

@@ -1,8 +1,7 @@
-<h2>Gérer mes articles</h2>
-
 <div class="container">
-    <div class="row">
-        <form method="post" action="gestionArticles/creer"><input type="submit" class="btn btn-outline-dark" value="Modifier">
+    <div class="row  page">
+        <h2>Gérer mes articles</h2>
+        <a class="btn btn-outline-light" id="btnCreerArticle" href="gestionArticles/creer">Créer un nouvel article</a>
     </div>
     <div class="row">
         <table class="table">

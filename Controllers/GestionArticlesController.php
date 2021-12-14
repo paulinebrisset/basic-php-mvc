@@ -41,11 +41,8 @@ public function index(){
         */
     }
 /****Création d'un nouveal article */
-    public function creer(int $id = 1){
+    public function creer(){
         $this->render('gestionArticles/creer');
-        /* Dernière ligne qu'on aurait aussi bien pu écrire
-            $this->render('items/index',['item'=>$item]);
-        */
     }
     public function actualiserArticle(int $id, string $titre, string $description, $publie, $prix){
        
@@ -61,15 +58,11 @@ public function index(){
         $instanceItem-> setTitre ($titre);
         $instanceItem-> setDescription ($description);
         $instanceItem-> setPrix ($prix);
-        $instanceItem-> setPublie($publie);
-        
+        $instanceItem-> setPublie($publie);  
         $instanceItem->update($id,$instanceItem);
-        
-        // $instanceGestionArticleController= new GestionArticlesController;
-        // $instanceGestionArticleController->index();
-        /* Dernière ligne qu'on aurait aussi bien pu écrire
-            $this->render('items/index',['item'=>$item]);
-        */
+
+        header('Location: /gestionArticles');
+
     }
 
     public function creerArticle(string $titre, string $description, $prix, $publie, $categorie){
@@ -78,11 +71,10 @@ public function index(){
         // appel à la mdification 
         if ($publie == "true"){
             $publie = true;
-            echo ("oui");
         } else {
             $publie = false;
-            echo"non";
         }
+        
         $mesDonnees = [
         'titre'=> $titre,
         'description'=> $description,

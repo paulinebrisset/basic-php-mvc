@@ -6,6 +6,6 @@
     <?php if (!isset($_SESSION)) {
         session_start();
     } ?>
-    <?php include '../views/includes/styles.php' ?>
-    <?php include '../views/includes/navbar.php' ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'].'/views/includes/styles.php' ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'].'/views/includes/navbar.php' ?>
 </head>

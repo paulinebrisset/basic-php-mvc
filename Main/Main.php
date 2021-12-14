@@ -33,7 +33,7 @@ class Main {
             on aura la même page avec ou sans le slash, ça fait ce que l'on appelle du duplicate content
         */
 
-        if(!empty($uri) && $uri !='/pauline/projetscolaire/public/' && $uri[-1] === '/'){ //il y a quand même un slash systématique à la fin paraît-il, au moins sur la page d'accueil
+        if(!empty($uri) && $uri !='/' && $uri[-1] === '/'){ //il y a quand même un slash systématique à la fin paraît-il, au moins sur la page d'accueil
             // Dans ce cas on enlève le /
             $uri = substr($uri, 0, -1);
 
@@ -54,10 +54,10 @@ class Main {
         c'est aussi pour ne pas avoir une positition de $params qui stocke un slash 
         qu'on l'a enlevé dans le if d'avant
         */
-        // $params=[];
-        // if (isset($_GET['p'])){
+        $params=[];
+        if (isset($_GET['p'])){
             $params = explode('/', $_GET['p']);
-        // }
+         }
 
         // On vérifie si on a au moins un paramètre (donc si il y en a un dans $params[0])
         if($params[0] != ""){

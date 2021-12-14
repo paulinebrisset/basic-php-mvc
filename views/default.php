@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<?php include '../views/includes/head.php' ?>
+<?php include ($_SERVER['DOCUMENT_ROOT'].'/views/includes/head.php') ?>
 
 <body>
+    <div class="container-fluid">
+        <!--TESTS--->
 
-
-    <div class="container">
+        <!--FIN TESTS-->
         <?= $content ?>
     </div>
 
-    <?php include '../views/includes/js.php' ?>
+    <?php include ($_SERVER['DOCUMENT_ROOT'].'/views/includes/js.php') ?>
 </body>
 
-<?php include '../views/includes/footer.php' ?>
+<?php include ($_SERVER['DOCUMENT_ROOT'].'/views/includes/footer.php') ?>
 
 </html>
