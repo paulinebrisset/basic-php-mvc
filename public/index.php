@@ -10,7 +10,8 @@ use App\Models\Table\ModelItems;
 use App\Models\Table\ModelUtilisateurs;
 
 //Je définis une constante, ROOT, qui désigne le dossier racine du projet, qui est le dossier parent de public, d'om l'utilisation de dirname pour définir root
-    define('ROOT', dirname(__DIR__)); //on remonte d'un dossier grâce à une fonction pour que tout se passe bien. On redéfinit fictivement le ROOT
+ 
+define('ROOT', dirname(__DIR__)); //on remonte d'un dossier grâce à une fonction pour que tout se passe bien. On redéfinit fictivement le ROOT
     //
 
 /****Autoloader*****/

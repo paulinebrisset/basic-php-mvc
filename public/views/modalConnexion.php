@@ -1,13 +1,11 @@
 <!-- Modal Connexion -->
 <?php
+use App\Controllers\ConnectionController;
+$essaiConnexion = new ConnectionController;
 
-  use App\Controllers\ConnectionController;
-  $essaiConnexion = new ConnectionController;
-  
-  
-  if (isset($_POST['email'])){
-    $essaiConnexion->verifierUtilisateur($_POST['email'],$_POST['emdp']);
-  }
+if (isset($_POST['email'])) {
+  $essaiConnexion->verifierUtilisateur($_POST['email'], $_POST['emdp']);
+}
 ?>
 
 <div class="modal fade" id="modalConnexion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -28,31 +26,26 @@
               <br />
             </div>
           </div>
-          <div class=row>
-            <div class=col-12>
-
+          <div class="row">
+            <div class="col-12">
               <label for="emdp">Mot de passe</label>
               <input type="password" name="emdp" id="emdp">
               <br />
             </div>
           </div>
-          <div class=row>
-            <div class=col-12>
+          <div class="row">
+            <div class="col-12 titre">
               <button type="submit" class="btn btn-dark">Connexion</button>
               <br />
-              <a href="">Mot de passe oublié?</a>
             </div>
-            <div>
-              <p><?php $essaiConnexion->pbDeMotDePasse() ?></p>
-            </div>
+            <a href="">Mot de passe oublié?</a>
+          </div>
+          <div>
+            <p><?php $essaiConnexion->pbDeMotDePasse() ?></p>
           </div>
         </form>
-
       </div>
-
       <div class="modal-footer">
-
-
         <!-- <button type="button" class="btn btn-dark" action="./modalCreerUnCompte.php">Créer un compte</button> -->
         <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalCreerCompte" data-dismiss="modal">Créer un compte</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>

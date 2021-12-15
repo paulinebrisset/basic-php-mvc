@@ -20,7 +20,7 @@ abstract class Controller {
  
          extract($donnees);
         // Crée le chemin et inclut le fichier de vue
-
+        
     /*
         On démarre le buffer de sortie a partir de maintenant, 
         chaque echo sera mis en mémoire, puis tout ce qui est en mémoire 
@@ -37,6 +37,7 @@ abstract class Controller {
     // Crée le chemin et inclut le fichier de vue
 
         require_once($_SERVER['DOCUMENT_ROOT'].'/Views/'.$fichier.'.php');
+        
 
     /* 
         On stocke le contenu dans $content

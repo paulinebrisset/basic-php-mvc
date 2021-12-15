@@ -19,7 +19,7 @@ class ConnectionController extends Controller{
                 $_SESSION['utilisateur'] = $utilisateurExiste;
                 $_SESSION['erreurMdp'] = false;
 
-               $this->render('main/index');
+               $this->render('main/index', [], 'home');
                 exit();
             }
         }
@@ -27,7 +27,7 @@ class ConnectionController extends Controller{
             $_SESSION['erreurMdp'] = true;
             
             $newMainb = new MainController;
-            $newMainb->render('main/index');
+            $newMainb->render('main/index', [], 'home');
     }
 
     public function isTheUserAnAdmin(){
