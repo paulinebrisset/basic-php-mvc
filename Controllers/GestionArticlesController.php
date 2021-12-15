@@ -83,9 +83,7 @@ public function index(){
         'categorie'=>$categorie
         ];
 
-        $monObjetRequete = new ModelItems;
-        $grandfinal=$monObjetRequete->creer($mesDonnees);
-
+        $instanceItem->creer($mesDonnees);
     }
 }
   ?>

@@ -185,38 +185,9 @@ O: self Retourne l'objet hydraté
         $liste_champs = implode(', ', $champs);
         
         // On exécute la requête (retour vrai ou faux)
-        $bonjour = ('INSERT INTO '.$this->table.' ('. $liste_champs.') VALUES (?, ?, ?,?,?) ');
-        echo ("<br/><b>Requete</b><br/>");
-        var_dump ($bonjour);
-        return $this->executerRequete($bonjour,$valeurs);
+        $preRequete = ('INSERT INTO '.$this->table.' ('. $liste_champs.') VALUES (?, ?, ?,?,?) ');
+        return $this->executerRequete($preRequete,$valeurs);
     }
-    
-    // public function creer(array $donnees){
-    //     $requete = ('INSERT INTO '.$this->table.'(');
-    //     foreach ($donnees as $key => $value){
-    //     $champs = [];
-    //     $valeurs = [];
-
-    //     // On réorganise le tableau des paramètres pour l'exploiter
-    //     foreach($model as $champ => $valeur){
-    //         // UPDATE annonces SET titre = ?, description = ?, actif = ? WHERE id= ?
-    //         if($valeur !== null && $champ != 'db' && $champ != 'table'){
-    //             $champs[] = "$champ";
-    //             $valeurs[] = $valeur;
-    //         }
-    //     }
-       
-    //     // On transforme le tableau "champs" en une chaine de caractères
-    //     $liste_champs = implode(', ', $champs);
-    //     $liste_valeurs = implode(', ', $valeurs);
-
-    //     // On exécute la requête (retour vrai ou faux)
-    //     $bonjour = ('INSERT INTO '.$this->table.'('. $liste_champs.') VALUES ('.$liste_valeurs. ")");
-    //     echo ("<br/><b>Requete</b><br/>");
-    //     var_dump ($bonjour);
-    //     //return $this->executerRequete('INSERT INTO '.$this->table.'('. $liste_champs.') VALUES (', $valeurs);
-    // }
-
 }
 
 ?>

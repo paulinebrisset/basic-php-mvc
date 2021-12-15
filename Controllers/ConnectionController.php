@@ -29,6 +29,20 @@ class ConnectionController extends Controller{
             $newMainb = new MainController;
             $newMainb->render('main/index', [], 'home');
     }
+    public function creerUnUtilisateur($nom, $mail, $mdp) {
+        $utilisateur = new ModelUtilisateurs;
+
+        $mesDonnees = [
+        'nom'=> $nom,
+        'mail'=> $mail,
+        'mdp'=> $mdp,
+        'droit'=> false,
+        ];
+
+        $utilisateur ->creer($mesDonnees);
+        $logIn = new ConnectionController;  
+        $logIn->verifierUtilisateur($mail, $mdp);
+    }
 
     public function isTheUserAnAdmin(){
         if (isset($_SESSION['utilisateur']) && $_SESSION['utilisateur']['droit'] == true) {

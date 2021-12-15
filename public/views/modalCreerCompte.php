@@ -1,3 +1,11 @@
+<?php
+use App\Controllers\ConnectionController;
+$essaiConnexion = new ConnectionController;
+
+if (isset($_POST['mail'])) {
+  $essaiConnexion->creerUnUtilisateur($_POST['nom'], $_POST['mail'],$_POST['mdp']);
+}
+?>
 <!-- Modal créer un compte-->
 <div class="modal fade" id="modalCreerCompte" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -9,7 +17,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form id="creerUnCompte" method="post" action="./controllers/newUser.php">
+        <form id="creerUnCompte" method="post" action="">
           <label for="nom">Nom</label>
           <input type="text" name="nom" id="nom" />
           <br />
