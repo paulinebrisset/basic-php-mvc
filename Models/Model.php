@@ -171,6 +171,8 @@ O: self Retourne l'objet hydraté
     public function creer(array $model){
         $champs = [];
         $valeurs = [];
+        $valuesCount='?';
+        $valuesCounter=""; 
 
         // On réorganise le tableau des paramètres pour l'exploiter
         foreach($model as $champ => $valeur){
@@ -178,14 +180,16 @@ O: self Retourne l'objet hydraté
             if($valeur !== null && $champ != 'db' && $champ != 'table'){
                 $champs[] = "$champ";
                 $valeurs[] = "$valeur";
+                $valuesCounter.= (',?');
             }
         }
+        $valuesCount .= $valuesCounter;
+        $valuesCounter = substr($valuesCount, 0, -2); // retourne "d"
        
         // On transforme le tableau "champs" en une chaine de caractères
         $liste_champs = implode(', ', $champs);
-        
         // On exécute la requête (retour vrai ou faux)
-        $preRequete = ('INSERT INTO '.$this->table.' ('. $liste_champs.') VALUES (?, ?, ?,?,?) ');
+        $preRequete = ('INSERT INTO '.$this->table.' ('. $liste_champs.') VALUES ('.$valuesCounter.') ');
         return $this->executerRequete($preRequete,$valeurs);
     }
 }

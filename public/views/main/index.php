@@ -1,1 +1,1 @@
-<p class='blanc'>Merci de visiter notre site ! Choisissez des articles et n'oubliez pas de payer en partant</p>
+<p class='page blanc'>Merci de visiter notre site ! Choisissez des articles et n'oubliez pas de payer en partant</p>

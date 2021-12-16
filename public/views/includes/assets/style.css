@@ -33,6 +33,7 @@ body {
 container-fluid {
   padding: 0px;
 }
+
 td,
 th,
 thead {
@@ -94,6 +95,17 @@ form > div {
   justify-content: stretch;
 }
 
+.modal-header .close {
+  padding: 0;
+  margin: -1rem -1rem -1rem auto;
+  border-style:none;
+  background-color:none;
+}
+.close {
+  opacity:1;
+  background-color:none;
+}
+
 /******Affichage des articles********/
 
 .card {
@@ -110,15 +122,18 @@ form > div {
   -webkit-box-shadow: 2px 3px 8px 1px var(--second-main-color);
   box-shadow: 2px 3px 4px 1px var(--second-main-color);
 }
-
+.img-fluid{
+  width: 65%;
+  margin-bottom:2rem;
+}
 .enSavoirPlus {
   background-color: #fcfbf8;
-  border: 3px solid #00239a;
+  border: 3px solid var(--second-main-color);
   font-weight: 700;
   text-transform: uppercase;
   padding: 0.5rem 1.5rem;
-  box-shadow: 2px 2px 0 0 #fc362f;
-  margin: 9px;
+  box-shadow: 2px 2px 0 0 var(--third-main-color);
+  margin: 2rem;
 }
 .prix {
   font-family: "font-prix";
@@ -128,4 +143,13 @@ form > div {
 /************Interfaces de gestion des articles **************/
 #btnCreerArticle {
   margin: 7px;
+}
+.img-thumbnail{
+  max-height:7vh;
+  width:auto;
+}
+.table-danger>td,
+.table-danger>th
+{
+  background-color: var(--third-main-color)!important;
 }

@@ -1,6 +1,8 @@
 <!-- Modal Connexion -->
 <?php
+
 use App\Controllers\ConnectionController;
+
 $essaiConnexion = new ConnectionController;
 
 if (isset($_POST['email'])) {
@@ -13,8 +15,9 @@ if (isset($_POST['email'])) {
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">Connexion</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+        <form method="post" action="">
+          <input type="submit" class="close" data-dismiss="modal" aria-label="Close" value="&times;" id="annuleConnexion" aria-hidden="true" name="deconnection">
+        </form>
         </button>
       </div>
       <div class="modal-body">

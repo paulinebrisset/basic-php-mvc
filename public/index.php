@@ -28,30 +28,11 @@ define('ROOT', dirname(__DIR__)); //on remonte d'un dossier grâce à une foncti
         //On démarre l'application
     //var_dump ($app);
     $app->start();
+/*****MODEal */?>
+<?php include($_SERVER['DOCUMENT_ROOT'] . '/views/includes/js.php') ?>
+</body>
 
-/*****Mes petits tests à supprimer *****/
-/*
-echo ("<br/><h2><b> page index.php du dossier public</b></h2><br/>");
-echo ("<br/><h2><b>Retour à la page index.php du dossier public</b></h2><br/>");
-   
-    echo ("<br/><b> var dump de get</b><br/>");
-    var_dump ($_GET);
-    echo ("<br/>");
-    $mesItemps=new ModelItems();
+<?php include($_SERVER['DOCUMENT_ROOT'] . '/views/includes/footer.php') ?>
 
-    echo ("<br/><b> var dump d'un new modelItemps</b><br/>");
-    var_dump($mesItemps);
-    echo"<br/>";
-
-    // echo ("<br/><b> var dump d'un find All sur un new modelItemps</b><br/>");
-    // var_dump ($mesItemps->findAll());
-    
-    $mesUsers= new ModelUtilisateurs();
-
-    echo ("<br/><b> var dump d'un new modelUtilisateur</b><br/>");
-    var_dump ($mesUsers);
-    echo ("<br/><b> var dump d'un find All sur un new modelutilisateur/b><br/>");
-    echo ($mesUsers->findAll());
-*/
-    ?>
+</html>
     

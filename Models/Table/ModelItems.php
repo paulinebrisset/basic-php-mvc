@@ -12,7 +12,7 @@ class ModelItems extends Model {
     protected $prix;
     protected $publie;
     protected $date;
-    protected $url;
+    protected $image;
 
     public function __construct(){
         $this->table = 'items';
@@ -81,14 +81,14 @@ class ModelItems extends Model {
         $this->prix = $prix;
         return $this;
     }
-    /*Obtenir la valeur de url*/
-    public function getUrl(){
-        return $this->url;
+    /*Obtenir la valeur de image*/
+    public function getImage(){
+        return $this->image;
     }
 
-    /*Définir la valeur de url*/
-    public function setUrl($url):self{
-        $this->url = $url;
+    /*Définir la valeur de image*/
+    public function setImage($image):self{
+        $this->image = $image;
         return $this;
     }
     /*Obtenir la valeur de publie*/

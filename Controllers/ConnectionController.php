@@ -19,29 +19,33 @@ class ConnectionController extends Controller{
                 $_SESSION['utilisateur'] = $utilisateurExiste;
                 $_SESSION['erreurMdp'] = false;
 
-               $this->render('main/index', [], 'home');
-                exit();
+                header('Location: http://psco.test/');
+                exit;
             }
         }
             //le mail ou le mdp ne correspond pas
             $_SESSION['erreurMdp'] = true;
-            
-            $newMainb = new MainController;
-            $newMainb->render('main/index', [], 'home');
+            header('Location: http://psco.test/');
+            exit;
     }
     public function creerUnUtilisateur($nom, $mail, $mdp) {
-        $utilisateur = new ModelUtilisateurs;
+        if (isset($_SESSION['erreurMdp'])){
+            header('Location: http://psco.test/');
+            exit;
+        } else {
+            $utilisateur = new ModelUtilisateurs;
 
-        $mesDonnees = [
-        'nom'=> $nom,
-        'mail'=> $mail,
-        'mdp'=> $mdp,
-        'droit'=> false,
-        ];
+            $mesDonnees = [
+            'nom'=> $nom,
+            'mail'=> $mail,
+            'mdp'=> $mdp,
+            'droit'=> 0,
+            ];
 
-        $utilisateur ->creer($mesDonnees);
-        $logIn = new ConnectionController;  
-        $logIn->verifierUtilisateur($mail, $mdp);
+            $utilisateur ->creer($mesDonnees);
+            $logIn = new ConnectionController;  
+            $logIn->verifierUtilisateur($mail, $mdp);
+        }
     }
 
     public function isTheUserAnAdmin(){

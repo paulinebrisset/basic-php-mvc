@@ -44,43 +44,33 @@ public function index(){
     public function creer(){
         $this->render('gestionArticles/creer');
     }
-    public function actualiserArticle(int $id, string $titre, string $description, $publie, $prix){
+    public function actualiserArticle(int $id, string $titre, string $description, $publie, $prix, $image='default.png'){
        
         // On instancie le modèle items
         $instanceItem = new ModelItems;
-        // appel à la mdification 
-        if (isset($_POST['publie'])){
-            $publie = true;
-        } else {
-            $publie = false;
-        }
 
         $instanceItem-> setTitre ($titre);
         $instanceItem-> setDescription ($description);
         $instanceItem-> setPrix ($prix);
         $instanceItem-> setPublie($publie);  
+        $instanceItem->setImage($image);
         $instanceItem->update($id,$instanceItem);
-
+    
         header('Location: /gestionArticles');
 
     }
 
-    public function creerArticle(string $titre, string $description, $prix, $publie, $categorie){
+    public function creerArticle(string $titre, string $description, $prix, $publie, $categorie, $image="default.png"){
         // On instancie le modèle items
         $instanceItem = new ModelItems;
-        // appel à la mdification 
-        if ($publie == "true"){
-            $publie = true;
-        } else {
-            $publie = false;
-        }
-        
+
         $mesDonnees = [
         'titre'=> $titre,
         'description'=> $description,
         'prix'=> $prix,
         'publie'=> $publie,
-        'categorie'=>$categorie
+        'categorie'=>$categorie,
+        'image'=>$image
         ];
 
         $instanceItem->creer($mesDonnees);

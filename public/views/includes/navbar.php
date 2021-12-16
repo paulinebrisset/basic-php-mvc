@@ -5,8 +5,6 @@ use App\Controllers\ConnectionController;
 $reglageNavbar = new ConnectionController;
 $connexion = new ConnectionController;
 
-$connexion->verifierErreurMdp();
-
 if (isset($_POST['email'])) {
   $connexion->verifierUtilisateur($_POST['email'], $_POST['emdp']);
 }

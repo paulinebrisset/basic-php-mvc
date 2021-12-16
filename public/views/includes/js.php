@@ -5,3 +5,9 @@
 <!--Toggle Bootstrap-->
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 <script src="../views/includes/assets/script.js"></script>
+
+<?php
+use App\Controllers\ConnectionController;
+$connexion = new ConnectionController;
+$connexion->verifierErreurMdp();
+?>
