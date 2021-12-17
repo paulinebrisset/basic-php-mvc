@@ -6,7 +6,9 @@ use App\Models\Model;
  * Modèle pour la table "items"
  */
 class ModelItems extends Model {
-    protected $id;
+    protected $id_name;
+    protected $id_item;
+    protected $id_categorie;
     protected $titre;
     protected $description;
     protected $prix;
@@ -16,17 +18,18 @@ class ModelItems extends Model {
 
     public function __construct(){
         $this->table = 'items';
+        $this->id_name='item';
     }
 /******************GUETTERS ET SETTERS**************/
 
-    /* Obtenir la valeur de id */ 
-    public function getId():int{
-        return $this->id;
+    /* Obtenir la valeur de id_item */ 
+    public function getId_item():int{
+        return $this->id_item;
     }
 
-    /* Définir la valeur de id */ 
-    public function setId(int $id):self {
-        $this->id = $id;
+    /* Définir la valeur de id_item */ 
+    public function setId_item(int $id_item):self {
+        $this->id_item = $id_item;
         return $this;
         /*
         return $this permettra de créer les différentes infos en une fois depuis notre instance de modèle
@@ -38,7 +41,17 @@ class ModelItems extends Model {
             etc etc
         */
     }
+    /* Obtenir la valeur de id_item */ 
+    public function getId_categorie():int{
+        return $this->id_categorie;
+    }
 
+    /* Définir la valeur de id_item */ 
+    public function setId_categorie(int $id_categorie):self {
+        $this->id_item = $id_categorie;
+        return $this;
+    }
+        /*
     /* Obtenir la valeur de titre */
     public function getTitre():string{
         return $this->titre;

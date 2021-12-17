@@ -12,6 +12,7 @@ class ModelUtilisateurs extends Model{
     /*************CONSTRUCTEUR ********************/
     public function __construct(){
         $this->table = 'utilisateurs';
+        $this->id_name='utilisateur';
     }
 
     /**************GETTERS **********/

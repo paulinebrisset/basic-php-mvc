@@ -7,10 +7,10 @@
 
             <div class="card col-12 col-sm article">
                 <h3><a href="categories/lire/<?php echo $categorie["id"] ?>">
-                        <?php echo ($categorie['titre']) ?></a></h3>
+                        <?php echo ($categorie['nom_categorie']) ?></a></h3>
 
 
-                <p><?php echo ($categorie['description']) ?></p>
+                <p><?php echo ($categorie['description_categorie']) ?></p>
             </div>
         <?php } ?>
         <?php

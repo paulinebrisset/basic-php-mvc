@@ -88,10 +88,12 @@ I: array $criteres Tableau de critères
 */
 
     public function find(int $id) {
-    // On exécute la requête
-        $query = $this->executerRequete("SELECT * FROM ".$this->table." WHERE id = ".$id);
-        return $query->fetch();
-    }
+        // On exécute la requête
+            $whereId = ('WHERE id_'.$this->id_name.'=');
+            $query = $this->executerRequete("SELECT * FROM ".$this->table.' '.$whereId.$id);
+            return $query->fetch();
+        }
+
 /*********************PARTIE UPDATE DES DONNEES *********************/
 /*
 M : Mise à jour d'un enregistrement suivant un tableau de données

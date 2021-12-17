@@ -44,7 +44,7 @@ public function index(){
     public function creer(){
         $this->render('gestionArticles/creer');
     }
-    public function actualiserArticle(int $id, string $titre, string $description, $publie, $prix, $image='default.png'){
+    public function actualiserArticle(int $id, string $titre, string $description, $publie, $prix, int $categorie, $image='default.png'){
        
         // On instancie le modèle items
         $instanceItem = new ModelItems;
@@ -53,6 +53,7 @@ public function index(){
         $instanceItem-> setDescription ($description);
         $instanceItem-> setPrix ($prix);
         $instanceItem-> setPublie($publie);  
+        $instanceItem-> setId_categorie($categorie);  
         $instanceItem->setImage($image);
         $instanceItem->update($id,$instanceItem);
     
