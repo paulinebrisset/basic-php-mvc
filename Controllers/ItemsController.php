@@ -15,7 +15,8 @@ class ItemsController extends Controller{
         //instancier la classe ModelItems
         $articlesModel = new ModelItems;
         //On va chercher toutes les annonces publiées grâce à une méthode du Modèle
-        $articles=$articlesModel->findBy(['publie'=>1]);
+        $condition = ('order by id_item desc');
+        $articles=$articlesModel->findBy(['publie'=>1], $condition);
         /*
         Là c'est une méthode de Controller. On lui file  
         1 - le nom du fichier qui va ouvrir les résultats
@@ -43,5 +44,11 @@ class ItemsController extends Controller{
         /* Dernière ligne qu'on aurait aussi bien pu écrire
             $this->render('items/index',['item'=>$item]);
         */
+    }
+    
+    public function afficherLaCategorie($id){
+        $instanceMI = new ModelItems;
+        $catArticle = $instanceMI->findColumn('categorie', $id);
+        return $catArticle['nom_categorie'];
     }
 }

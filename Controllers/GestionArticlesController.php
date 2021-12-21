@@ -82,5 +82,6 @@ public function index(){
 
         $instanceItem->creer($mesDonnees);
     }
-}
+
+    }
   ?>

@@ -12,6 +12,5 @@ class ModelCategorie extends Model {
 
     public function __construct(){
         $this->table = 'categories';
-        $this->id_name='categorie';
     }
 }

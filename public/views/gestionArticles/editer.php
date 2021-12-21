@@ -1,52 +1,67 @@
 <?php
 
 use App\Controllers\GestionArticlesController;
+use App\Controllers\CategoriesController;
+
+$instanceCategoriesController = new CategoriesController;
 
 if (isset($_POST['submit'])) {
     $gestionArticleController = new GestionArticlesController;
     $gestionArticleController->actualiserArticle(($item["id_item"]), $_POST['titre'], $_POST['description'], $_POST['publie'], $_POST['prix'], $_POST['categorie'], $_POST['image']);
 }
+
 ?>
-<div class="page">
-    <h2>Modifier un article</h2>
-    <article>
-        <form method="post" action="" class="blanc">
-            <div class="form-group">
+<div class="container-fluid">
+    <div class="row page">
+        <h2>Modifier un article</h2>
+    </div>
+    <form method="post" action="" class="col-12">
+        <div class="row blanc">
+            <div class="form-group  col-12">
                 <label for="titre">Nom de l'article</label>
                 <input type="text" class="form-control" name="titre" value="<?= $item["titre"] ?>">
             </div>
-            <div class="form-group">
+            <div class="form-group  col-12">
                 <label for="image">Nom de la photo d'illustration</label>
                 <textarea class="form-control" name="image" rows="1"><?= $item["image"] ?></textarea>
             </div>
-            <div class="form-group">
+            <div class="form-group  col-12">
                 <label for="description">Description</label>
                 <textarea class="form-control" name="description" rows="8"><?= $item["description"] ?></textarea>
             </div>
-            <div class="form-group">
+        </div>
+        <div class="row blanc">
+
+            <div class="form-group col-12 col-sm-5">
                 <label for="publie">Visibilité</label>
                 <select class="form-control" name="publie">
                     <option value="1">Publié</option>
                     <option value="0">Masqué</option>
                 </select>
             </div>
-            <div class="form-group">
-                <input type="checkbox" checked data-toggle="toggle" data-size="mini" data-on="Publié" data-off="Masqué" data-onstyle="info" data-offstyle="default" name="publication">
+            <div class="col-12 col-sm-3">
+                <div class="form-group col-12">
+                    <label for="prix">Prix</label>
+                    <input type="text" class="form-control" name="prix" value="<?= $item["prix"] ?>" placeholder="€">
+                </div>
             </div>
-            <div class="form-group">
-                <label for="categorie">Catégorie</label>
+            <div class="form-group col-12 col-sm-5">
+                <label for="categorie">Nom Catégorie</label>
                 <select class="form-control" id="categorie" name="categorie">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
+                    <option value="1"><?php echo ($instanceCategoriesController->afficherNomCategorie(1)) ?></option>
+                    <option value="2"><?php echo ($instanceCategoriesController->afficherNomCategorie(2)) ?></option>
+                    <option value="3"><?php echo ($instanceCategoriesController->afficherNomCategorie(3)) ?></option>
+                    <option value="4"><?php echo ($instanceCategoriesController->afficherNomCategorie(4)) ?></option>
+                    <option value="5"><?php echo ($instanceCategoriesController->afficherNomCategorie(5)) ?></option>
                 </select>
+
             </div>
-            <div class="form-group">
-                <label for="prix">Prix</label>
-                <input type="text" class="form-control" name="prix" value="<?= $item["prix"] ?>" placeholder="€">
+        </div>
+        <div class="row blanc">
+            <div class="col-12">
+                <button type="submit" class="btn btn-outline-dark" name="submit">Valider</button>
             </div>
-            <button type="submit" class="btn btn-outline-dark" name="submit">Valider</button>
-        </form>
-    </article>
+        </div>
+    </form>
+
 </div>

@@ -38,9 +38,19 @@ class CategoriesController extends Controller{
         // On récupère les données
         $categorie = $instanceCategorie->find($id);
 
-        $this->render('categorie/lire', compact('categorie'));
+        $this->render('categories/lire', compact('categorie'));
         /* Dernière ligne qu'on aurait aussi bien pu écrire
             $this->render('items/index',['item'=>$item]);
         */
     }
+    public function afficherNomCategorie ($id){
+        $instanceMI = new ModelCategorie;
+        $nomCat = $instanceMI->find($id);
+        return $nomCat['nom_categorie'];
+    }
+    public function afficherItemsDuneCategorie($id){
+        $instanceMI = new ModelCategorie;
+        $itemsDuneCat = $instanceMI->findChilds('items', $id);
+        return $itemsDuneCat;
+     }
 }

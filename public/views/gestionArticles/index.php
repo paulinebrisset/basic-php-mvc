@@ -1,3 +1,8 @@
+<?php
+use App\Controllers\ItemsController;
+$instanceController = new ItemsController; 
+?>
+
 <div class="container">
     <div class="row  page">
         <h2>Gérer mes articles</h2>
@@ -22,7 +27,7 @@
                         <th scope="row"><?php echo $article['id_item'] ?></th>
                         <td><?php echo $article['titre'] ?></td>
                         <td><img class="img-thumbnail" src="<?php echo '/views/includes/assets/pictures/' . $article['image'] ?>" alt="cet article est à vendre"></td>
-                        <td><?php echo ['id_categorie'] ?></td>
+                        <td><?php echo $instanceController->afficherLaCategorie($article['id_item']) ?> ?></td>
                         <td><input type="checkbox" data-toggle="toggle" data-size="mini" data-on="Publié" data-off="Masqué" data-onstyle="info" data-offstyle="default" name="publie"></td>
                         <td>
                             <form method="post" action="gestionArticles/editer/<?php echo $article["id_item"] ?>"><input type="submit" class="btn btn-outline-danger" value="Modifier"></form>
@@ -35,7 +40,7 @@
                         <th scope="row"><?php echo $article['id_item'] ?></th>
                         <td><?php echo $article['titre'] ?></td>
                         <td><img class="img-thumbnail" src="<?php echo '/views/includes/assets/pictures/' . $article['image'] ?>" alt="cet article est à vendre"></td>
-                        <td><?php echo $article['id_categorie'] ?></td>
+                        <td><?php echo $instanceController->afficherLaCategorie($article['id_item']) ?></td>
                         <td>
                             <input type="checkbox" checked data-toggle="toggle" data-size="mini" data-on="Publié" data-off="Masqué" data-onstyle="default" data-offstyle="danger" name="publie">
                         </td>

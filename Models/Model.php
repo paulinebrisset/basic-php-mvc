@@ -48,7 +48,21 @@ class Model extends Database{
         $query = $this->executerRequete('SELECT * FROM '.$this->table); //TODO : à vérifier 
         return $query->fetchAll();
     }
+/* find 
+    M : Sélection d'un enregistrement directement avec son id
+    O : Tableau contenant l'enregistrement trouvé
+    I : $id id de l'enregistrement
+*/
 
+public function find(int $id) {
+    // On exécute la requête
+        $whereId = ('WHERE id_'.$this->table);
+        $whereId  = substr($whereId, 0, -1); //enlever le dernier caractère. Avoir id_item pour la table "items"
+        $whereId .="=";
+        $query = $this->executerRequete("SELECT * FROM ".$this->table.' '.$whereId.$id);
+        return $query->fetch();
+    }
+    
 /* findBy
 M : Sélection de plusieurs enregistrements suivant un tableau de critères
 M: écrire des choses du style : $item = new ModelItem / $resultats = $item->findBy(['admin'=>'true'])
@@ -58,7 +72,7 @@ O : return array Tableau des enregistrements trouvés
 I: array $criteres Tableau de critères
 */
  
-    public function findBy(array $criteres) {
+    public function findBy(array $criteres, string $condition=null) {
         $champs = [];
         $valeurs = [];
 
@@ -76,27 +90,54 @@ I: array $criteres Tableau de critères
          $liste_champs = implode(' AND ', $champs);
 
         // On exécute la requête
-        $query = $this->executerRequete('SELECT * FROM '. $this->table .' WHERE '. $liste_champs, $valeurs);
+        $query = $this->executerRequete('SELECT * FROM '. $this->table .' WHERE '. $liste_champs, $valeurs, $condition);
         return $query->fetchAll();
     }
 
 
-/* find 
-    M : Sélection d'un enregistrement directement avec son id
-    O : Tableau contenant l'enregistrement trouvé
-    I : $id id de l'enregistrement
-*/
 
-    public function find(int $id) {
-        // On exécute la requête
-            $whereId = ('WHERE id_'.$this->table);
-            $whereId  = substr($whereId, 0, -1); //enlever le dernier caractère. Avoir id_item pour la table "items"
-            $whereId .="=";
-            $query = $this->executerRequete("SELECT * FROM ".$this->table.' '.$whereId.$id);
-            return $query->fetch();
+//trouver le nom de la catégorie correspondant à un item
+        public function findColumn(string $column, $id){
+            $nom_table=($column.'s');
+            $nom_id=substr($this->table, 0, -1);
+            $request = $this->executerRequete('select nom_'.$column.' from '.$nom_table.' inner join '.$this->table.' on '.$nom_table.'.id_'.$column.' = '.$this->table.'.id_'.$column.' where id_'.$nom_id.' = '.$id);
+            return $request->fetch();
+        }
+
+        //trouver les items correspondant à une catégorie.
+        public function findChilds(string $childs, $id){
+            $nom_idChild=substr($childs, 0, -1);
+            $nom_idParent=substr($this->table, 0, -1);
+            $request = $this->executerRequete('select * from '.$childs.' inner join '.$this->table.' on '.$childs.'.id_'.$nom_idParent.' = '.$this->table.'.id_'.$nom_idParent.' where '.$this->table.'.id_'.$nom_idParent.' = '.$id);
+            return $request->fetchAll();
         }
 
 /*********************PARTIE UPDATE DES DONNEES *********************/
+
+public function creer(array $model){
+    $champs = [];
+    $valeurs = [];
+    $valuesCount='?';
+    $valuesCounter=""; 
+
+    // On réorganise le tableau des paramètres pour l'exploiter
+    foreach($model as $champ => $valeur){
+        // UPDATEpro annonces SET titre = ?, description = ?, actif = ? WHERE id= ?
+        if($valeur !== null && $champ != 'db' && $champ != 'table'){
+            $champs[] = "$champ";
+            $valeurs[] = "$valeur";
+            $valuesCounter.= (',?');
+        }
+    }
+    $valuesCount .= $valuesCounter;
+    $valuesCounter = substr($valuesCount, 0, -2); // retourne "d"
+   
+    // On transforme le tableau "champs" en une chaine de caractères
+    $liste_champs = implode(', ', $champs);
+    // On exécute la requête (retour vrai ou faux)
+    $preRequete = ('INSERT INTO '.$this->table.' ('. $liste_champs.') VALUES ('.$valuesCounter.') ');
+    return $this->executerRequete($preRequete,$valeurs);
+}
 /*
 M : Mise à jour d'un enregistrement suivant un tableau de données
 O : booléen (requête éxécutée ou non)
@@ -177,30 +218,6 @@ O: self Retourne l'objet hydraté
         return $this;
     }
 
-    public function creer(array $model){
-        $champs = [];
-        $valeurs = [];
-        $valuesCount='?';
-        $valuesCounter=""; 
-
-        // On réorganise le tableau des paramètres pour l'exploiter
-        foreach($model as $champ => $valeur){
-            // UPDATEpro annonces SET titre = ?, description = ?, actif = ? WHERE id= ?
-            if($valeur !== null && $champ != 'db' && $champ != 'table'){
-                $champs[] = "$champ";
-                $valeurs[] = "$valeur";
-                $valuesCounter.= (',?');
-            }
-        }
-        $valuesCount .= $valuesCounter;
-        $valuesCounter = substr($valuesCount, 0, -2); // retourne "d"
-       
-        // On transforme le tableau "champs" en une chaine de caractères
-        $liste_champs = implode(', ', $champs);
-        // On exécute la requête (retour vrai ou faux)
-        $preRequete = ('INSERT INTO '.$this->table.' ('. $liste_champs.') VALUES ('.$valuesCounter.') ');
-        return $this->executerRequete($preRequete,$valeurs);
-    }
 }
 
 ?>
