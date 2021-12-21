@@ -28,12 +28,12 @@ public function index(){
     }
 
 /****Affiche d'article à modifier */
-    public function editer(int $id = 1){
+    public function editer(int $id_item = 1){
         // On instancie le modèle
         $instanceModel = new ModelItems;
 
         // On récupère les données
-        $item = $instanceModel->find($id);
+        $item = $instanceModel->find($id_item);
 
         $this->render('gestionArticles/editer', compact('item'));
         /* Dernière ligne qu'on aurait aussi bien pu écrire
@@ -49,16 +49,18 @@ public function index(){
         // On instancie le modèle items
         $instanceItem = new ModelItems;
 
-        $instanceItem-> setTitre ($titre);
-        $instanceItem-> setDescription ($description);
-        $instanceItem-> setPrix ($prix);
-        $instanceItem-> setPublie($publie);  
-        $instanceItem-> setId_categorie($categorie);  
-        $instanceItem->setImage($image);
-        $instanceItem->update($id,$instanceItem);
+        $mesDonnees = [
+            'titre'=> $titre,
+            'description'=> $description,
+            'prix'=> $prix,
+            'publie'=> $publie,
+            'id_categorie'=>$categorie,
+            'image'=>$image
+            ];
+
+        $instanceItem->update($id,$mesDonnees);
     
         header('Location: /gestionArticles');
-
     }
 
     public function creerArticle(string $titre, string $description, $prix, $publie, $categorie, $image="default.png"){

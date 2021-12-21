@@ -6,7 +6,7 @@ use App\Models\Model;
  * Modèle pour la table "items"
  */
 class ModelItems extends Model {
-    protected $id_name;
+  
     protected $id_item;
     protected $id_categorie;
     protected $titre;
@@ -18,7 +18,6 @@ class ModelItems extends Model {
 
     public function __construct(){
         $this->table = 'items';
-        $this->id_name='item';
     }
 /******************GUETTERS ET SETTERS**************/
 

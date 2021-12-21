@@ -89,7 +89,9 @@ I: array $criteres Tableau de critères
 
     public function find(int $id) {
         // On exécute la requête
-            $whereId = ('WHERE id_'.$this->id_name.'=');
+            $whereId = ('WHERE id_'.$this->table);
+            $whereId  = substr($whereId, 0, -1); //enlever le dernier caractère. Avoir id_item pour la table "items"
+            $whereId .="=";
             $query = $this->executerRequete("SELECT * FROM ".$this->table.' '.$whereId.$id);
             return $query->fetch();
         }
@@ -107,26 +109,31 @@ donneesDeMonItemModifie = [
     'publie'=>true
     ] 
     $itemDejaInstancieDepuisModelItem->update(2,$memeItemDejaCree)
+
 */
-    public function update(int $id, Model $model) {
+   public function update(int $id,array $criteres) {
         $champs = [];
         $valeurs = [];
 
-        // On réorganise le tableau des paramètres pour l'exploiter
-        foreach($model as $champ => $valeur){
-            // UPDATE annonces SET titre = ?, description = ?, actif = ? WHERE id= ?
-            if($valeur !== null && $champ != 'db' && $champ != 'table'){
-                $champs[] = "$champ = ?";
-                $valeurs[] = $valeur;
-            }
-        }
-        $valeurs[] = $id;
+        // On boucle pour récupérer les paramètres de la requête et séparer les noms de champs des valeurs
+        foreach($criteres as $champ => $valeur){
+            $champs[] = "$champ = ?";
+            $valeurs[]= $valeur;
+        }   
 
-        // On transforme le tableau "champs" en une chaine de caractères
-        $liste_champs = implode(', ', $champs);
+    /*implode : méthode php qui rassemble les éléments d'un tableau en une chaîne
+        On transforme le tableau "champs" en chaîne de caractères séparée par des AND si il y a plusieurs champs à sélectionner
+        (le premier argument de implode, ici 'AND', est un séparateur qui est utilisé que si il  y a plusieurs éléments dans le tableau)
+   */
+        $liste_champs = implode(',', $champs);
 
-        // On exécute la requête (retour vrai ou faux)
-        return $this->executerRequete('UPDATE '.$this->table.' SET '. $liste_champs.' WHERE id = ?', $valeurs);
+        $whereId = ('WHERE id_'.$this->table);
+        $whereId  = substr($whereId, 0, -1); //enlever le dernier caractère. Avoir id_item pour la table "items"
+        $whereId .="=";
+        $whereId .= $id;
+
+        // On exécute la requête
+        return $this->executerRequete('UPDATE '.$this->table.' SET '. $liste_champs.' '.$whereId.' ', $valeurs);
     }
 
 /*********************PARTIE SUPPRESSION DES DONNEES *********************/    

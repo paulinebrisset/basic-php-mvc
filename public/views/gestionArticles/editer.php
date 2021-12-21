@@ -4,7 +4,7 @@ use App\Controllers\GestionArticlesController;
 
 if (isset($_POST['submit'])) {
     $gestionArticleController = new GestionArticlesController;
-    $gestionArticleController->actualiserArticle(($item["id"]), $_POST['titre'], $_POST['description'], $_POST['publie'], $_POST['prix'], $_POST['image']);
+    $gestionArticleController->actualiserArticle(($item["id_item"]), $_POST['titre'], $_POST['description'], $_POST['publie'], $_POST['prix'], $_POST['categorie'], $_POST['image']);
 }
 ?>
 <div class="page">
@@ -16,8 +16,12 @@ if (isset($_POST['submit'])) {
                 <input type="text" class="form-control" name="titre" value="<?= $item["titre"] ?>">
             </div>
             <div class="form-group">
+                <label for="image">Nom de la photo d'illustration</label>
+                <textarea class="form-control" name="image" rows="1"><?= $item["image"] ?></textarea>
+            </div>
+            <div class="form-group">
                 <label for="description">Description</label>
-                <textarea class="form-control" name="description" rows="10"><?= $item["description"] ?></textarea>
+                <textarea class="form-control" name="description" rows="8"><?= $item["description"] ?></textarea>
             </div>
             <div class="form-group">
                 <label for="publie">Visibilité</label>
@@ -31,7 +35,7 @@ if (isset($_POST['submit'])) {
             </div>
             <div class="form-group">
                 <label for="categorie">Catégorie</label>
-                <select class="form-control" id="categorie">
+                <select class="form-control" id="categorie" name="categorie">
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>

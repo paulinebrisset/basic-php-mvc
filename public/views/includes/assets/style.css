@@ -55,7 +55,7 @@ label {
   text-transform: uppercase;
   font-family: "font-titre";
 }
-form {
+form, article {
   padding: 10px;
 }
 .blanc {
