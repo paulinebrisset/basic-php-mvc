@@ -84,7 +84,7 @@ class ConnectionController extends Controller{
         if (isset($_SESSION['utilisateur']) && $_SESSION['utilisateur']['droit'] == true) {
             echo('
             <li class="nav-item">
-                <a class="nav-link" href="gestionArticles">Gérer mes articles</a>
+                <a class="nav-link" href="/gestionArticles">Gérer mes articles</a>
             </li>');
         } 
     }

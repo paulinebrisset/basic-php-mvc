@@ -63,16 +63,20 @@ public function index(){
         header('Location: /gestionArticles');
     }
 
-    public function creerArticle(string $titre, string $description, $prix, $publie, $categorie, $image="default.png"){
+    public function creerArticle(string $titre, string $description, $prix, $publie, $categorie, $image="default.png", $date=null){
         // On instancie le modèle items
         $instanceItem = new ModelItems;
+        date_default_timezone_set('UTC');
+        $date=date("Y-m-d");
+
 
         $mesDonnees = [
+        'date'=>$date,
         'titre'=> $titre,
         'description'=> $description,
         'prix'=> $prix,
         'publie'=> $publie,
-        'categorie'=>$categorie,
+        'id_categorie'=>$categorie,
         'image'=>$image
         ];
 

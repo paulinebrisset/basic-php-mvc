@@ -8,12 +8,12 @@ use App\Models\Model;
 class ModelItems extends Model {
   
     protected $id_item;
+    protected $date;
     protected $id_categorie;
     protected $titre;
     protected $description;
     protected $prix;
     protected $publie;
-    protected $date;
     protected $image;
 
     public function __construct(){
