@@ -22,7 +22,7 @@ $itemsDuneCat = $instanceCatController->afficherItemsDuneCategorie($categorie["i
                 <h4 class="prix"><?php echo ($article['prix'] . '€') ?></h4>
                 <img class="img-fluid" src="<?php echo '/views/includes/assets/pictures/' . $article['image'] ?>" alt="cet article est à vendre">
                 <p><?php echo ($article['description']) ?></p>
-                <a class="enSavoirPlus" href="items/lire/<?php echo $article["id_item"] ?>">En savoir plus</a>
+                <a class="enSavoirPlus" href="/items/lire/<?php echo $article["id_item"] ?>">En savoir plus</a>
             </div>
         <?php } ?>
     </div>

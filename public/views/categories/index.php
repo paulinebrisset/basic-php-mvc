@@ -1,15 +1,13 @@
-<div class="container">
+<div class="container-fluid pageArticles">
     <div class="row page">
-        <h2>Categories</h2>
+        <h2 class="titre">Categories</h2>
     </div>
-    <div class="row">
+    <div class="row page">
         <?php foreach ($categories as $categorie) { ?>
 
             <div class="card col-12 col-sm article">
-                <h3><a href="/categories/lire/<?php echo $categorie["id_categorie"] ?>">
+                <h3 class="titre"><a href="/categories/lire/<?php echo $categorie["id_categorie"] ?>">
                         <?php echo ($categorie['nom_categorie']) ?></a></h3>
-
-
                 <p><?php echo ($categorie['description_categorie']) ?></p>
             </div>
         <?php } ?>
