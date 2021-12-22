@@ -1,21 +1,21 @@
-    <!DOCTYPE html>
-    <html lang="fr">
+<!DOCTYPE html>
+<html lang="fr">
 
-    <?php include($_SERVER['DOCUMENT_ROOT'] . '/views/includes/head.php') ?>
+<?php include($_SERVER['DOCUMENT_ROOT'] . '/views/includes/head.php') ?>
 
-    <body>
-        <h2>Bienvenue</h2>
-        <div class="text-center">
-            <a href="items" class="btn btn-dark ">Voir tous nos articles</a>
+<body>
+    <div class="container-fluid pageArticles">
+        <div class="row page">
+            <h2>Bienvenue</h2>
         </div>
-
-        <div class="container-fluid">
-            <?= $content ?>
+        <div class="row page">
+            <div class="text-center">
+                <a href="items" class="btn btn-dark ">Voir tous nos articles</a>
+            </div>
         </div>
-
-        <?php include($_SERVER['DOCUMENT_ROOT'] . '/views/includes/js.php') ?>
-    </body>
-
-    <?php include($_SERVER['DOCUMENT_ROOT'] . '/views/includes/footer.php') ?>
-
-    </html>
+    </div>
+    <div class="container-fluid">
+        <?php echo $content ?>
+    </div>
+</body>
+</html>

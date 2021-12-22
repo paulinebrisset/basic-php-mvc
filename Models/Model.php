@@ -90,7 +90,9 @@ I: array $criteres Tableau de critères
          $liste_champs = implode(' AND ', $champs);
 
         // On exécute la requête
-        $query = $this->executerRequete('SELECT * FROM '. $this->table .' WHERE '. $liste_champs, $valeurs, $condition);
+        $mareqq = ('SELECT * FROM '. $this->table .' '.$condition.' WHERE '. $liste_champs.' '.$valeurs);
+        var_dump($mareqq);
+        $query = $this->executerRequete('SELECT * FROM '. $this->table .' '.$condition.' WHERE '. $liste_champs, $valeurs);
         return $query->fetchAll();
     }
 

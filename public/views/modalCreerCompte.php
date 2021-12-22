@@ -19,13 +19,13 @@ if (isset($_POST['mail'])) {
       <div class="modal-body">
         <form id="creerUnCompte" method="post" action="">
           <label for="nom">Nom</label>
-          <input type="text" name="nom" id="nom" />
+          <input type="text" name="nom" id="nom" minlength="3" maxlength="20"/>
           <br />
           <label for="mail">Email</label>
-          <input type="email" name="mail" id="mail">
+          <input type="email" name="mail" id="mail" minlength="9" maxlength="20">
           <br />
           <label for="age">Mot de passe</label>
-          <input type="password" name="mdp" id="mdp" />
+          <input type="password" name="mdp" id="mdp" minlength="9" maxlength="20"/>
           <br />
           <input type="submit" class="btn btn-dark titre" value="Créer le compte">
       </div>

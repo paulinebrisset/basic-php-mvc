@@ -8,6 +8,7 @@ $essaiConnexion = new ConnectionController;
 if (isset($_POST['email'])) {
   $essaiConnexion->verifierUtilisateur($_POST['email'], $_POST['emdp']);
 }
+
 ?>
 
 <div class="modal fade" id="modalConnexion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -16,7 +17,7 @@ if (isset($_POST['email'])) {
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">Connexion</h5>
         <form method="post" action="">
-          <input type="submit" class="close" data-dismiss="modal" aria-label="Close" value="&times;" id="annuleConnexion" aria-hidden="true" name="deconnection">
+          <input type="submit" class="close" aria-hidden="true" value="&times;" name="deconnection">
         </form>
         </button>
       </div>

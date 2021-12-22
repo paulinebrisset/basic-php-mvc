@@ -22,7 +22,8 @@ $instanceController = new ItemsController;
             </thead>
             <tbody>
                 <?php foreach ($articles as $article) {
-                    if ($article['publie'] === 0) {
+                    if ($article['publie'] == 0) {
+                        echo ($article['id_item']."oui");
                         echo ('<tr class="table-danger">'); ?>
                         <th scope="row"><?php echo $article['id_item'] ?></th>
                         <td><?php echo $article['titre'] ?></td>
@@ -35,14 +36,16 @@ $instanceController = new ItemsController;
                         </tr>
                     <?php
           
-                } else {
-                        echo ("<tr>"); ?>
+                    } else {
+                        echo ("<tr>"); 
+                         echo ($article['id_item']."non");
+                         ?>
                         <th scope="row"><?php echo $article['id_item'] ?></th>
                         <td><?php echo $article['titre'] ?></td>
                         <td><img class="img-thumbnail" src="<?php echo '/views/includes/assets/pictures/' . $article['image'] ?>" alt="cet article est à vendre"></td>
                         <td><?php echo $instanceController->afficherLaCategorie($article['id_item']) ?></td>
                         <td>
-                            <input type="checkbox" checked data-toggle="toggle" data-size="mini" data-on="Publié" data-off="Masqué" data-onstyle="default" data-offstyle="danger" name="publie">
+                            <input type="checkbox" checked data-toggle="toggle" data-size="mini" data-on="Mublié" data-off="Masqué" data-onstyle="default" data-offstyle="danger" name="publie">
                         </td>
                         <td>
                             <form method="post" action="gestionArticles/editer/<?php echo $article["id_item"] ?>"><input type="submit" class="btn btn-outline-dark" value="Modifier"></form>
@@ -50,7 +53,6 @@ $instanceController = new ItemsController;
                         </tr>
                     <?php } ?>
                 <?php } ?>
-
             </tbody>
         </table>
     </div>

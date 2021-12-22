@@ -8,20 +8,10 @@ $connexion = new ConnectionController;
 if (isset($_POST['email'])) {
   $connexion->verifierUtilisateur($_POST['email'], $_POST['emdp']);
 }
-if(isset($_POST['deconnection']) AND $_POST['deconnection']=='Déconnection') {
-  if(!isset($_SESSION)) {
-    session_start();
-  } 
-  // remove all session variables
-  session_unset();
-  // destroy the session
-  session_destroy();
-}
-
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" id="titreNavBar" href="/">Mon super site</a>
+  <a class="navbar-brand" id="titreNavBar" href="/">Kafé Parfé</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -37,7 +27,7 @@ if(isset($_POST['deconnection']) AND $_POST['deconnection']=='Déconnection') {
         <a class="nav-link" href="/categories">Categories</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
+        <a class="nav-link disabled" href="/utilisateurs">Espace membre</a>
       </li>
       <?php $connexion->barreDeNavigationComplete() ?>
     </ul>

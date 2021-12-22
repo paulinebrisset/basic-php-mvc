@@ -53,8 +53,8 @@ abstract class Controller {
         // } else {
             // On fabrique le "template" avec default.php qui a un espace prévu pour la variable $contenu
             require_once($_SERVER['DOCUMENT_ROOT'].'/Views/'.$template.'.php');
+
             //celui-là ne s'exécute pas si le premier (l39) s'est exécuté
             require_once($_SERVER['DOCUMENT_ROOT'].'/Views/'.$fichier.'.php');
-        //}
     }
 }

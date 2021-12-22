@@ -28,6 +28,9 @@ class Main
 
     public function start()
     {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
 
         /*******NETTOYAGE D'URL ET ON EVITE LE DUPLICATE CONTENT ***********/
 
@@ -78,7 +81,6 @@ class Main
 
         // Je contrôle si l'utilisateur est admin avant de continuer. Toutes les fonctions de cette classes renvoient vers des pages destinées exclusivement à l'admin
             if (strcasecmp($params[0],'gestionarticles')==0) { //strcasecmp pour ignorer la casse
-   
                 $instanceConnectionController = new ConnectionController;
                 if ($instanceConnectionController->isTheUserAnAdmin() == false) {
                     http_response_code(404);
@@ -91,7 +93,7 @@ class Main
             // On instancie le contrôleur
             $controller = new $controller();
 
-            /* 
+        /* 
         PARAM 2
             On sauvegarde le 2ème paramètre dans $action 
             si on a un param, c'est une méthode qu'on utilise -> soit elle existe, soit 404

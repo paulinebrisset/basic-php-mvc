@@ -1,18 +1,21 @@
 <?php
 
 namespace App\Controllers;
+
 use App\Controllers\MainController;
 use App\Models\Table\ModelUtilisateurs;
 
-class ConnectionController extends Controller{
+class ConnectionController extends Controller
+{
 
 
-    public function verifierUtilisateur(string $mail, string $mdp){
+    public function verifierUtilisateur(string $mail, string $mdp)
+    {
         $_SESSION['erreurMdp'] = false;
-       
+
         $utilisateur = new ModelUtilisateurs;
         $cetUtilisateur = $utilisateur->findBy(['mail' => $mail, 'mdp' => $mdp]);
-        
+
         foreach ($cetUtilisateur as $utilisateurExiste) {
 
             if (($utilisateurExiste['mail'] == $mail) && ($utilisateurExiste['mdp'] == $mdp)) {
@@ -23,75 +26,85 @@ class ConnectionController extends Controller{
                 exit;
             }
         }
-            //le mail ou le mdp ne correspond pas
-            $_SESSION['erreurMdp'] = true;
-            header('Location: http://psco.test/');
-            exit;
+        //le mail ou le mdp ne correspond pas
+        $_SESSION['erreurMdp'] = true;
+        header('Location: http://psco.test/');
+        exit;
     }
-    public function creerUnUtilisateur($nom, $mail, $mdp) {
-        if (isset($_SESSION['erreurMdp'])){
+    public function creerUnUtilisateur($nom, $mail, $mdp)
+    {
+        if (isset($_SESSION['erreurMdp'])) {
             header('Location: http://psco.test/');
             exit;
         } else {
             $utilisateur = new ModelUtilisateurs;
 
             $mesDonnees = [
-            'nom'=> $nom,
-            'mail'=> $mail,
-            'mdp'=> $mdp,
-            'droit'=> 0,
+                'nom' => $nom,
+                'mail' => $mail,
+                'mdp' => $mdp,
+                'droit' => 0,
             ];
 
-            $utilisateur ->creer($mesDonnees);
-            $logIn = new ConnectionController;  
+            $utilisateur->creer($mesDonnees);
+            $logIn = new ConnectionController;
             $logIn->verifierUtilisateur($mail, $mdp);
         }
     }
 
-    public function isTheUserAnAdmin(){
+    public function isTheUserAnAdmin()
+    {
         if (isset($_SESSION['utilisateur']) && $_SESSION['utilisateur']['droit'] == true) {
             return true;
         } else {
             return false;
         }
     }
-    public function deconnexion() {
-        // remove all session variables
-        session_unset();
+    public function deconnexion()
+    {/*non utilisé*/
+    //     if (!isset($_SESSION)) {
+    //         session_start();
+    //     }
+    //     // remove all session variables
+    //     session_unset();
+    //     echo ("je passe par la déco");
+    //     // destroy the session
+    //     session_destroy();
 
-        // destroy the session
-        session_destroy();
-
-        $redirection = new MainController;
-        $redirection->render('main/index', [], 'home');
-        exit;
+    //     $redirection = new MainController;
+    //     $redirection->render('main/index', [], 'home');
+    //     exit;
     }
-/*********** GESTION DE LA NAVBAR *********/
+    /*********** GESTION DE LA NAVBAR *********/
 
-    public function pbDeMotDePasse(){
+    public function pbDeMotDePasse()
+    {
         if (isset($_SESSION['erreurMdp']) && $_SESSION['erreurMdp'] == true) {
             echo ("Problème d'authentification, veuillez réessayer");
         }
     }
 
-    public function verifierErreurMdp(){
-        if (isset($_SESSION['erreurMdp']) && $_SESSION['erreurMdp']==true) {
+    public function verifierErreurMdp()
+    {
+        if (isset($_SESSION['erreurMdp']) && $_SESSION['erreurMdp'] == true) {
             echo ("<script>$('#modalConnexion').modal()</script>");
         }
     }
 
-    public function barreDeNavigationComplete () {
+    public function barreDeNavigationComplete()
+    {
         if (isset($_SESSION['utilisateur']) && $_SESSION['utilisateur']['droit'] == true) {
-            echo('
+            echo ('
             <li class="nav-item">
                 <a class="nav-link" href="/gestionArticles">Gérer mes articles</a>
             </li>');
-        } 
+        }
     }
-    public function quelsBoutonsAfficher(){
+    public function quelsBoutonsAfficher()
+    {
         if (!(isset($_SESSION['utilisateur']))) {
 
-        ?>
+?>
             <button type="button" class="btn btn-outline-dark my-2 my-sm-0" data-toggle="modal" data-target="#modalConnexion" href="./includes/modalConnexion.php">
                 Connexion
             </button>
@@ -104,18 +117,17 @@ class ConnectionController extends Controller{
             <form method="post" action="">
                 <input type="submit" class="btn btn-outline-dark my-2 my-sm-0 ml-3" value="Déconnection" name="deconnection">
             </form>
-        <?php }
+<?php }
     }
 
-    static function afficherLeTitre(){
-        $titreParDefaut = 'Bonjour';
+    static function afficherLeTitre()
+    {
+        $titreParDefaut = 'Bienvenue';
         //si la variable $_SESSION['user'] a été créée et qu'elle contient qqch, on affiche le nom renseigné par l'utilisateur, sinon on affiche le titre du site par défaut
         if (isset($_SESSION['utilisateur'])) {
-            echo ($_SESSION['utilisateur']['nom'] != "" ? 'Bonjour ' . ucfirst($_SESSION['utilisateur']['nom']) : $titreParDefaut);
+            echo ($_SESSION['utilisateur']['nom'] != "" ? ('<h5 class="navbar-brand">Bonjour ' . ucfirst($_SESSION['utilisateur']['nom'] . ' </h5>')) : ('<h5 class="navbar-brand">' . $titreParDefaut . ' </h5>'));
         } else {
-            echo ($titreParDefaut);
+            echo ('<h5 class="navbar-brand">' . $titreParDefaut . ' </h5>');
         }
     }
-
-
 }
