@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers;
 use App\Models\Table\ModelItems;
+use App\Models\Table\ModelCategorie;
 
 class GestionArticlesController extends Controller{
 
@@ -82,6 +83,19 @@ public function index(){
 
         $instanceItem->creer($mesDonnees);
     }
+    /*Création d'une nouvelle catégorie*/
+    public function creerCategorie(){
+        $this->render('gestionArticles/creerCategorie');
+    }
+    public function creerCat(string $nom_categorie, string $description_categorie){
+        // On instancie le modèle items
+        $instanceCategorie = new ModelCategorie;
+        $mesDonnees = [
+        'nom_categorie'=>$nom_categorie,
+        'description_categorie'=> $description_categorie,
+        ];
 
+        $instanceCategorie->creer($mesDonnees);
+    }
     }
   ?>

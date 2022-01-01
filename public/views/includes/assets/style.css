@@ -125,6 +125,7 @@ form > div {
   margin: 15px 15px;
   align-items: center;
   min-width: 23vw;
+  max-width: 50vw;
 }
 
 .card:hover {
@@ -157,8 +158,8 @@ form > div {
   max-height:7vh;
   width:auto;
 }
-.table-danger>td,
+/* .table-danger>td,
 .table-danger>th
 {
   background-color: var(--third-main-color)!important;
-}
+} */

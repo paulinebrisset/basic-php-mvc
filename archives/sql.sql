@@ -9,6 +9,7 @@ CREATE TABLE  utilisateurs  (
      mail  VARCHAR(50) NOT NULL,
      mdp  VARCHAR(50) NOT NULL,
      droit tinyint NOT NULL DEFAULT '0',
+     vendeur BOOLEAN NOT NULL DEFAULT false,
     PRIMARY KEY ( id_utilisateur ),
     UNIQUE  mail  ( mail )
 );

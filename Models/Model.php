@@ -88,11 +88,10 @@ I: array $criteres Tableau de critères
             (le premier argument de implode, ici 'AND', est un séparateur qui est utilisé que si il  y a plusieurs éléments dans le tableau)
        */
          $liste_champs = implode(' AND ', $champs);
+         $liste_champs .= $condition;
 
         // On exécute la requête
-        $mareqq = ('SELECT * FROM '. $this->table .' '.$condition.' WHERE '. $liste_champs.' '.$valeurs);
-        var_dump($mareqq);
-        $query = $this->executerRequete('SELECT * FROM '. $this->table .' '.$condition.' WHERE '. $liste_champs, $valeurs);
+        $query = $this->executerRequete('SELECT * FROM '. $this->table .' WHERE '. $liste_champs, $valeurs);
         return $query->fetchAll();
     }
 
@@ -102,7 +101,8 @@ I: array $criteres Tableau de critères
         public function findColumn(string $column, $id){
             $nom_table=($column.'s');
             $nom_id=substr($this->table, 0, -1);
-            $request = $this->executerRequete('select nom_'.$column.' from '.$nom_table.' inner join '.$this->table.' on '.$nom_table.'.id_'.$column.' = '.$this->table.'.id_'.$column.' where id_'.$nom_id.' = '.$id);
+            $integrite_referentielle= ($nom_table.'.id_'.$column.' = '.$this->table.'.id_'.$column);
+            $request = $this->executerRequete('select nom_'.$column.' from '.$nom_table.' inner join '.$this->table.' on '.$integrite_referentielle.' where id_'.$nom_id.' = '.$id);
             return $request->fetch();
         }
 
